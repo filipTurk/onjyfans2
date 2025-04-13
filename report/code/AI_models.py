@@ -1,4 +1,4 @@
-import olamma
+import ollama
 import transformers
 from openai import OpenAI
 import os 
@@ -6,14 +6,9 @@ import dotenv
 dotenv.load_dotenv()
 
 class YogobellaMLLMix: 
-    
-    def __init__(self, model_name, model_path, tokenizer_path):
-        self.model_name = model_name
-        self.model_path = model_path
-        self.tokenizer_path = tokenizer_path
 
-    def ollama(self, model_name="deepseek-r1", messages= [{'role': 'user', 'content': 'What is the capital of Slovenia?'}]):
-        response = olamma.chat(
+    def ollama_model(self, model_name="deepseek-r1", messages= [{'role': 'user', 'content': 'What is the capital of Slovenia?'}]):
+        response = ollama.chat(
             model=model_name,
             messages=messages
         )
