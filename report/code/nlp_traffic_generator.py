@@ -150,11 +150,11 @@ class TrafficNLPProcessor:
     def _format_input_features(self, features: Dict) -> str:
         """Format features into text input for the model"""
         return f"""dogodek: {features['event_type']}
-cesta: {features['road_name']}
-smer: {features['direction']}
-odsek: {features['section']}
-razlog: {features['reason']}
-posledica: {features['consequence']}"""
+                    cesta: {features['road_name']}
+                    smer: {features['direction']}
+                    odsek: {features['section']}
+                    razlog: {features['reason']}
+                    posledica: {features['consequence']}"""
     
     def generate_report(self, event: TrafficEvent) -> str:
         """Generate natural language report from traffic event"""
