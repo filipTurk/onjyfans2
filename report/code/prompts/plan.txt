@@ -77,3 +77,6 @@ Set up scheduled runs based on radio broadcast needs
 Implement error handling and monitoring
 Create alerts for potential issues
 Document the entire system for operators
+
+/////////////////////////////////
+Get the repository to be clean and structured. 
