@@ -5,7 +5,7 @@ from traffic_schema import TrafficEvent, RoadSection, Direction, RoadType, Event
 
 class TrafficReportParser:
     def __init__(self):
-        # Common patterns in traffic reports
+
         self.road_patterns = {
             RoadType.MOTORWAY: r'(avtocest[ai]|AC)\s*([\w\s-]+)',
             RoadType.EXPRESSWAY: r'(hitr[ai]\s*cest[ai]|HC)\s*([\w\s-]+)',
@@ -14,15 +14,159 @@ class TrafficReportParser:
             RoadType.LOCAL_ROAD: r'(lokaln[ai]\s*cest[ai])\s*([\w\s-]+)'
         }
         
-        # Standard road names mapping
-        self.standard_roads = {
-            "PRIMORSKA": {"from": "LJUBLJANA", "to": "KOPER"},
-            "ŠTAJERSKA": {"from": "LJUBLJANA", "to": "MARIBOR"},
-            "DOLENJSKA": {"from": "LJUBLJANA", "to": "OBREŽJE"},
-            "GORENJSKA": {"from": "LJUBLJANA", "to": "KARAVANKE"},
-            "POMURSKA": {"from": "MARIBOR", "to": "LENDAVA"}
+        self.road_naming_rules = {
+            "PRIMORSKA": {
+                "correct_names": ["PRIMORSKA AVTOCESTA"],
+                "incorrect_names": ["primorska hitra cesta"],
+                "directions": ["proti Kopru", "proti Ljubljani"],
+                "endpoints": {"from": "LJUBLJANA", "to": "KOPER"},
+                "notes": "Standard motorway naming"
+            },
+            "ŠTAJERSKA": {
+                "correct_names": ["ŠTAJERSKA AVTOCESTA"],
+                "incorrect_names": [],
+                "directions": ["proti Mariboru", "proti Ljubljani"],
+                "endpoints": {"from": "LJUBLJANA", "to": "MARIBOR"},
+                "notes": "Standard motorway naming"
+            },
+            "DOLENJSKA": {
+                "correct_names": ["DOLENJSKA AVTOCESTA"],
+                "incorrect_names": [],
+                "directions": ["proti Obrežju", "proti Ljubljani"],
+                "endpoints": {"from": "LJUBLJANA", "to": "OBREŽJE"},
+                "notes": "Standard motorway naming"
+            },
+            "GORENJSKA": {
+                "correct_names": ["GORENJSKA AVTOCESTA"],
+                "incorrect_names": [],
+                "directions": ["proti Karavankam", "proti Avstriji", "proti Ljubljani"],
+                "endpoints": {"from": "LJUBLJANA", "to": "KARAVANKE"},
+                "notes": "Standard motorway naming"
+            },
+            "POMURSKA": {
+                "correct_names": ["POMURSKA AVTOCESTA"],
+                "incorrect_names": [],
+                "directions": ["proti Lendavi", "proti Madžarski", "proti Mariboru"],
+                "endpoints": {"from": "MARIBOR", "to": "LENDAVA"},
+                "notes": "Standard motorway naming"
+            },
+            "PODRAVSKA": {
+                "correct_names": ["PODRAVSKA AVTOCESTA"],
+                "incorrect_names": [],
+                "directions": ["proti Gruškovju", "proti Hrvaški", "proti Mariboru"],
+                "endpoints": {"from": "MARIBOR", "to": "GRUŠKOVJE"},
+                "notes": "Never use 'proti Ptuju'",
+                "forbidden_directions": ["proti Ptuju"]
+            },
+            
+            # Expressways (Hitre ceste)
+            "VIPAVSKA": {
+                "correct_names": ["VIPAVSKA HITRA CESTA"],
+                "incorrect_names": ["primorska hitra cesta"],
+                "directions": ["proti Italiji", "proti Vrtojbi", "proti Nanosu", "proti Razdrtemu"],
+                "endpoints": {"from": "NANOS", "to": "VRTOJBA"},
+                "notes": "Never use 'primorska hitra cesta'"
+            },
+            "OBALNA": {
+                "correct_names": ["OBALNA HITRA CESTA"],
+                "incorrect_names": ["primorska hitra cesta"],
+                "directions": ["proti Kopru", "proti Portorožu"],
+                "endpoints": {"from": "SRMIN", "to": "IZOLA"},
+                "notes": "Never use 'primorska hitra cesta'"
+            },
+            "KOPER-ŠKOFIJE": {
+                "correct_names": ["HITRA CESTA KOPER-ŠKOFIJE"],
+                "incorrect_names": ["primorska hitra cesta"],
+                "directions": ["proti Kopru", "proti Škofijam"],
+                "endpoints": {"from": "KOPER", "to": "ŠKOFIJE"},
+                "notes": "Name by locations, never 'primorska hitra cesta'"
+            },
+            "DOLGA VAS": {
+                "correct_names": ["HITRA CESTA DOLGA VAS"],
+                "incorrect_names": [],
+                "directions": ["proti pomurski avtocesti", "proti mejnemu prehodu Dolga vas"],
+                "endpoints": {"from": "MEJNI PREHOD", "to": "DOLGA VAS"},
+                "notes": "Small section before border crossing"
+            },
+            
+            # Special Sections
+            "GABRK-FERNETIČI": {
+                "correct_names": ["AVTOCESTNI ODSEK GABRK-FERNETIČI"],
+                "incorrect_names": ["primorska avtocesta"],
+                "directions": ["proti Italiji", "proti primorski avtocesti", "proti Kopru", "proti Ljubljani"],
+                "endpoints": {"from": "GABRK", "to": "FERNETIČI"},
+                "notes": "Not primorska avtocesta"
+            },
+            "MARIBOR-ŠENTILJ": {
+                "correct_names": ["AVTOCESTNI ODSEK MARIBOR-ŠENTILJ"],
+                "incorrect_names": ["štajerska avtocesta"],
+                "directions": ["proti Mariboru", "proti Šentilju"],
+                "endpoints": {"from": "MARIBOR", "to": "ŠENTILJ"},
+                "notes": "Not štajerska avtocesta"
+            },
+            "SLIVNICA-DRAGUČOVA": {
+                "correct_names": ["MARIBORSKA VZHODNA OBVOZNICA"],
+                "incorrect_names": [],
+                "directions": ["proti Avstriji", "proti Lendavi", "proti Ljubljani"],
+                "endpoints": {"from": "SLIVNICA", "to": "DRAGUČOVA"},
+                "notes": "Never use 'proti Mariboru'",
+                "forbidden_directions": ["proti Mariboru"]
+            },
+            
+            # Regional and Main Roads
+            "ŠKOFJELOŠKA": {
+                "correct_names": ["ŠKOFJELOŠKA OBVOZNICA", "REGIONALNA CESTA ŠKOFJA LOKA-GORENJA VAS"],
+                "incorrect_names": [],
+                "directions": ["proti Ljubljani", "proti Gorenji vasi"],
+                "endpoints": {"from": "ŠKOFJA LOKA", "to": "GORENJA VAS"},
+                "notes": "Important due to Stén tunnel"
+            },
+            "TRZINSKA": {
+                "correct_names": ["GLAVNA CESTA LJUBLJANA-ČRNUČE-TRZIN"],
+                "incorrect_names": ["trzinska obvoznica"],
+                "directions": ["proti Trzinu", "proti Ljubljani"],
+                "endpoints": {"from": "LJUBLJANA", "to": "TRZIN"},
+                "notes": "Use 'glavna cesta', not 'trzinska obvoznica'"
+            }
         }
         
+        # Ljubljana Ring Road Sections
+        self.ljubljana_ring = {
+            "VZHODNA": {
+                "correct_names": ["LJUBLJANSKA VZHODNA OBVOZNICA"],
+                "endpoints": {"from": "MALENCE", "to": "ZADOBROVA"},
+                "directions": ["proti Novemu mestu", "proti Mariboru"],
+                "notes": "Part of Ljubljana ring road"
+            },
+            "ZAHODNA": {
+                "correct_names": ["LJUBLJANSKA ZAHODNA OBVOZNICA"],
+                "endpoints": {"from": "KOSEZE", "to": "KOZARJE"},
+                "directions": ["proti Kranju", "proti Kopru"],
+                "notes": "Part of Ljubljana ring road"
+            },
+            "SEVERNA": {
+                "correct_names": ["LJUBLJANSKA SEVERNA OBVOZNICA"],
+                "endpoints": {"from": "KOSEZE", "to": "ZADOBROVA"},
+                "directions": ["proti Mariboru", "proti Kranju"],
+                "notes": "Part of Ljubljana ring road"
+            },
+            "JUŽNA": {
+                "correct_names": ["LJUBLJANSKA JUŽNA OBVOZNICA"],
+                "endpoints": {"from": "KOZARJE", "to": "MALENCE"},
+                "directions": ["proti Kopru", "proti Novemu mestu"],
+                "notes": "Part of Ljubljana ring road"
+            }
+        }
+        
+        # Special Cases
+        self.special_cases = {
+            "MARIBOR_BETNAVA-PESNICA": {
+                "correct_names": ["REGIONALNA CESTA BETNAVA-PESNICA"],
+                "incorrect_names": ["hitra cesta skozi Maribor", "bivša hitra cesta skozi Maribor"],
+                "notes": "Former expressway through Maribor, now regional road"
+            }
+        }
+
         # Event type patterns
         self.event_patterns = {
             EventType.WRONG_WAY_DRIVER: r'(vozi[l]?\s+v\s+napačn[oi]?\s+smer)|voznik.*napačn[oi]',
@@ -35,6 +179,21 @@ class TrafficReportParser:
             EventType.OBJECT_ON_ROAD: r'(predmet|razsut\s+tovor)',
             EventType.BORDER_JAM: r'zastoj.*mejn'
         }
+#Prosimo voznike, naj se razvrstijo na skrajni levi rob in desni rob vozišča oziroma odstavni pas, v sredini pa pustijo prostor za intervencijska vozila!
+
+        self.event_detail_instructions = {
+            EventType.WRONG_WAY_DRIVER: "Opozarjamo vse voznike, ki vozijo v smeri proti vozniku, da je na njihovo polovico avtoceste zašel voznik, ki vozi v napačno smer. Vozite skrajno desno in ne prehitevajte.",
+            }
+
+        self.emergency_resolution_message_required = {
+            EventType.WRONG_WAY_DRIVER: True,
+            EventType.ACCIDENT_WITH_JAM: True,
+        }
+
+        self.event_resolution_messages_instruction = {
+            EventType.WRONG_WAY_DRIVER: "Promet na pomurski avtocesti iz smeri Dragučove proti Pernici ni več ogrožen zaradi voznika, ki je vozil po napačni polovici avtoceste",
+        }
+
 
     def _extract_road_info(self, text: str) -> Optional[Dict[str, Any]]:
         """Extract road type and name from text."""
