@@ -273,12 +273,15 @@ if __name__ == "__main__":
     logger.info("🚀 STARTING FINE-TUNING PIPELINE")
     logger.info("=" * 60)
     
+    print(torch.cuda.is_available())
+    print(torch.cuda.get_device_name(0))
+
     # Check if debug mode
     debug_mode = "--debug" in sys.argv or len(sys.argv) > 1 and sys.argv[1] == "debug"
     
     try:
         logger.info("📁 Loading training data...")
-        df = pd.read_csv("../data/RTVSlo/trainingdataset.csv")
+        df = pd.read_csv("report/code/trainingdataset.csv")
         logger.info(f"✅ Loaded {len(df)} rows from CSV")
         
         # Show data info
