@@ -2,61 +2,136 @@ import torch
 from transformers import pipeline, AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import pandas as pd
 import random
-from datasets import load_dataset, Dataset
+from datasets import Dataset
 import json
 from peft import LoraConfig, get_peft_model
 from transformers import TrainingArguments
 from trl import SFTTrainer
 from sklearn.model_selection import train_test_split
+import logging
+import sys
+import time
+from datetime import datetime
+import os
+
+# Setup logging
+def setup_logging():
+    """Setup comprehensive logging"""
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_file = f"training_log_{timestamp}.log"
+    
+    # Create formatter
+    formatter = logging.Formatter(
+        '%(asctime)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+    
+    # Setup file handler
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setFormatter(formatter)
+    
+    # Setup console handler
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setFormatter(formatter)
+    
+    # Setup logger
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
+    
+    return logger, log_file
+
+# Initialize logging
+logger, log_file = setup_logging()
 
 class FineTuner:
-    def __init__(self, modelName="cjvt/GaMS-27B", tokenizerName="cjvt/GaMS-27B", dataset=None):
+    def __init__(self, modelName="cjvt/GaMS-1B", tokenizerName="cjvt/GaMS-1B", dataset=None, debug_mode=True):
+        self.debug_mode = debug_mode
         self.model_name = modelName
         self.tokenizer_name = tokenizerName
-        self.dataset = dataset  # FIX: Store the dataset
+        self.dataset = dataset
         
-        self.bnb_config = self.loadBnBConfig()
-        self.load_model(model_name=modelName)
-        self.load_tokenizer()
+        logger.info(f"🚀 Starting FineTuner initialization")
+        logger.info(f"Model: {modelName}")
+        logger.info(f"Dataset size: {len(dataset) if dataset else 'None'}")
+        logger.info(f"Debug mode: {debug_mode}")
         
-        # FIX: Create pipeline with base model first
-        self.pipeline = pipeline("text-generation", model=self.model, tokenizer=self.tokenizer)
-        self.generate_test_text(prompt="Hello, how are you?", max_length=50)
+        start_time = time.time()
         
-        self.max_seq_length = 512
-        self.lora_alpha = 32
-        self.lora_dropout = 0.1
-        self.lora_r = 16
-        
-        self.lora_model = get_peft_model(
-            self.model,
-            self.loadPeftConfig()
-        )
-
-        self.print_trainable_parameters(self.model)
-        print("Model and tokenizer loaded successfully.")
-        self.print_trainable_parameters(self.lora_model)
-        
-        # Update pipeline to use LoRA model
-        self.pipeline = pipeline("text-generation", model=self.lora_model, tokenizer=self.tokenizer)
-        self.generate_test_text(prompt="Hello, how are you?", max_length=50)
-        
-        print("LoRA model initialized successfully.")
-        self.trainer = self.init_trainer()
-        print("Trainer initialized successfully.")
-        
-        print("Training started.")
-        self.trainer.train()
-        print("Training completed.")
-        metrics = self.trainer.evaluate()
-        print(metrics)
-
-        model_to_save = self.trainer.model.module if hasattr(self.trainer.model, 'module') else self.trainer.model
-        model_to_save.save_pretrained("outputs")
+        try:
+            logger.info("📦 Loading BitsAndBytes config...")
+            self.bnb_config = self.loadBnBConfig()
+            
+            logger.info("🤖 Loading model...")
+            self.load_model(model_name=modelName)
+            logger.info(f"✅ Model loaded in {time.time() - start_time:.1f}s")
+            
+            logger.info("🔤 Loading tokenizer...")
+            self.load_tokenizer()
+            logger.info("✅ Tokenizer loaded")
+            
+            # Test generation with base model
+            logger.info("🧪 Testing base model generation...")
+            self.pipeline = pipeline("text-generation", model=self.model, tokenizer=self.tokenizer)
+            test_output = self.generate_test_text(prompt="Hello, how are you?", max_length=50)
+            logger.info(f"Base model test: {test_output[:100]}...")
+            
+            # LoRA setup
+            logger.info("🔧 Setting up LoRA configuration...")
+            self.max_seq_length = 512
+            self.lora_alpha = 32
+            self.lora_dropout = 0.1
+            self.lora_r = 16
+            
+            logger.info("🎯 Applying LoRA to model...")
+            self.lora_model = get_peft_model(self.model, self.loadPeftConfig())
+            
+            logger.info("📊 Model parameters:")
+            self.print_trainable_parameters(self.model, "Base model")
+            self.print_trainable_parameters(self.lora_model, "LoRA model")
+            
+            # Test LoRA model
+            logger.info("🧪 Testing LoRA model generation...")
+            self.pipeline = pipeline("text-generation", model=self.lora_model, tokenizer=self.tokenizer)
+            test_output = self.generate_test_text(prompt="Hello, how are you?", max_length=50)
+            logger.info(f"LoRA model test: {test_output[:100]}...")
+            
+            logger.info("🏋️ Initializing trainer...")
+            self.trainer = self.init_trainer()
+            logger.info("✅ Trainer initialized successfully")
+            
+            # Only train if not in debug mode
+            if not self.debug_mode:
+                logger.info("🎓 Starting training...")
+                train_start = time.time()
+                self.trainer.train()
+                train_time = time.time() - train_start
+                logger.info(f"✅ Training completed in {train_time:.1f}s ({train_time/60:.1f} min)")
+                
+                logger.info("📈 Evaluating model...")
+                metrics = self.trainer.evaluate()
+                logger.info(f"Evaluation metrics: {metrics}")
+                
+                logger.info("💾 Saving model...")
+                model_to_save = self.trainer.model.module if hasattr(self.trainer.model, 'module') else self.trainer.model
+                model_to_save.save_pretrained("outputs")
+                logger.info("✅ Model saved to ./outputs")
+            else:
+                logger.info("🐛 Debug mode - skipping training")
+                
+        except Exception as e:
+            logger.error(f"❌ Error during initialization: {str(e)}")
+            import traceback
+            logger.error(traceback.format_exc())
+            raise
 
     def init_trainer(self):
+        logger.info("📊 Splitting dataset...")
         train_data, eval_data = train_test_split(self.dataset, test_size=0.2, random_state=666)
-        # FIX: Remove recursive call
+        logger.info(f"Train size: {len(train_data)}, Eval size: {len(eval_data)}")
+        
+        logger.info("⚙️ Creating trainer...")
         trainer = SFTTrainer(
             model=self.lora_model,
             train_dataset=train_data,
@@ -69,25 +144,32 @@ class FineTuner:
         )
         return trainer
 
-    def init_training_args(self, output_dir="./results", num_train_epochs=3, per_device_train_batch_size=2, per_device_eval_batch_size=2):
+    def init_training_args(self):
+        # Reduced steps for faster debugging
+        max_steps = 50 if self.debug_mode else 500
+        
+        logger.info(f"🎯 Training arguments: max_steps={max_steps}")
+        
         training_arguments = TrainingArguments(
-            output_dir=output_dir,
-            per_device_train_batch_size=per_device_train_batch_size,
-            per_device_eval_batch_size=per_device_eval_batch_size,  # FIX: Add this parameter
-            gradient_accumulation_steps=1,
+            output_dir="./results",
+            per_device_train_batch_size=1,  # Reduced for memory
+            per_device_eval_batch_size=1,
+            gradient_accumulation_steps=4,  # Compensate for smaller batch
             optim="paged_adamw_32bit",
-            save_steps=100,
-            logging_steps=10,
+            save_steps=25 if self.debug_mode else 100,
+            logging_steps=5 if self.debug_mode else 10,
             learning_rate=2e-4,
             fp16=True,
             max_grad_norm=0.3,
-            max_steps=500,
+            max_steps=max_steps,
             warmup_ratio=0.03,
             group_by_length=True,
             lr_scheduler_type="constant",
             report_to="none",
-            evaluation_strategy="steps",  # FIX: Add evaluation strategy
-            eval_steps=100,  # FIX: Add eval steps
+            evaluation_strategy="steps",
+            eval_steps=25 if self.debug_mode else 100,
+            save_total_limit=2,  # Keep only 2 checkpoints
+            dataloader_num_workers=0,  # Avoid multiprocessing issues
         )
         return training_arguments
 
@@ -112,45 +194,46 @@ class FineTuner:
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
             quantization_config=self.bnb_config,
-            trust_remote_code=True
+            trust_remote_code=True,
+            device_map="auto"  # Automatic device placement
         )
         self.model.config.use_cache = False
         
     def load_tokenizer(self):
-        # FIX: Use correct attribute name
         self.tokenizer = AutoTokenizer.from_pretrained(self.tokenizer_name, trust_remote_code=True)
         self.tokenizer.pad_token = self.tokenizer.eos_token
 
-    def get_pipeline(self, model=None):
-        return pipeline("text-generation", model=self.lora_model, tokenizer=self.tokenizer)
-
     def generate_test_text(self, prompt, max_length=100):
-        return self.pipeline(prompt, max_length=max_length, do_sample=True, temperature=0.7)[0]['generated_text']
+        try:
+            result = self.pipeline(prompt, max_length=max_length, do_sample=True, temperature=0.7)
+            return result[0]['generated_text']
+        except Exception as e:
+            logger.error(f"Generation failed: {e}")
+            return f"Generation failed: {str(e)}"
     
-    def print_trainable_parameters(self, model):
+    def print_trainable_parameters(self, model, model_name="Model"):
         trainable_params = 0
         all_param = 0
         for _, param in model.named_parameters():
             all_param += param.numel()
             if param.requires_grad:
                 trainable_params += param.numel()
-        print(f"trainable params: {trainable_params}, all params: {all_param}, trainable%: {100 * trainable_params / all_param:.2f}")
+        
+        message = f"{model_name} - Trainable: {trainable_params:,}, Total: {all_param:,}, Trainable%: {100 * trainable_params / all_param:.2f}%"
+        logger.info(message)
 
+# Your dataset class (same as before but with logging)
 class FineTuningDataset:
     def __init__(self, data):
         self.data = data
         self.traffic_examples = []
+        logger.info(f"📂 Initializing dataset with {len(data)} examples")
         self.create_traffic_examples()
-        print(f"Dataset initialized with {len(self.data)} examples.")
-        print(f"5 examples: {self.traffic_examples[:5]}")
+        logger.info(f"✅ Created {len(self.traffic_examples)} training examples")
+        if len(self.traffic_examples) > 0:
+            logger.info(f"Sample example: {self.traffic_examples[0]}")
         self.prompts = []
         
-    def __len__(self):
-        return len(self.data)
-
-    def __getitem__(self, idx):
-        return self.data.iloc[idx].to_dict()
-
     def create_traffic_examples(self):
         for _, row in self.data.iterrows():
             example = {
@@ -162,26 +245,15 @@ class FineTuningDataset:
             self.traffic_examples.append(example)
         return self.traffic_examples
     
-    def get_random_example(self):
-        return random.choice(self.traffic_examples)
-    
     def parse_input_output(self, example):
         input_text = example["messages"][0]["content"]
         output_text = example["messages"][1]["content"]
         return input_text, output_text
     
-    def get_next_example(self, current_index):
-        next_index = current_index + 1
-        if next_index < len(self.traffic_examples):
-            return self.parse_input_output(self.traffic_examples[next_index])
-        else:
-            return None
-    
     def get_prompt(self, example):
         SYSTEM_PROMPT = "You are a helpful assistant that provides traffic information based on user queries."
         user_msg, assistant_msg = self.parse_input_output(example)
         
-        # FIX: Format for SFTTrainer - use 'text' field instead of separate prompt/answer
         formatted_text = f"<|system|>\n{SYSTEM_PROMPT}\n<|user|>\n{user_msg}\n<|assistant|>\n{assistant_msg}"
         
         self.prompts.append({
@@ -189,17 +261,56 @@ class FineTuningDataset:
         }) 
         
     def generate_dataset(self):
+        logger.info("🔄 Converting to HuggingFace dataset format...")
         for example in self.traffic_examples:
             self.get_prompt(example)
-        return Dataset.from_list(self.prompts)
+        dataset = Dataset.from_list(self.prompts)
+        logger.info(f"✅ Dataset ready: {len(dataset)} examples")
+        return dataset
 
 if __name__ == "__main__":
-    df = pd.read_csv("../data/RTVSlo/trainingdataset.csv")
-    finetuning_dataset = FineTuningDataset(df)
-    finetuning_hf_dataset = finetuning_dataset.generate_dataset()
-
-    tuner = FineTuner(
-        modelName="cjvt/GaMS-27B",
-        tokenizerName="cjvt/GaMS-27B",
-        dataset=finetuning_hf_dataset
-    )
+    logger.info("=" * 60)
+    logger.info("🚀 STARTING FINE-TUNING PIPELINE")
+    logger.info("=" * 60)
+    
+    # Check if debug mode
+    debug_mode = "--debug" in sys.argv or len(sys.argv) > 1 and sys.argv[1] == "debug"
+    
+    try:
+        logger.info("📁 Loading training data...")
+        df = pd.read_csv("../data/RTVSlo/trainingdataset.csv")
+        logger.info(f"✅ Loaded {len(df)} rows from CSV")
+        
+        # Show data info
+        logger.info(f"Columns: {list(df.columns)}")
+        if 'user_message' in df.columns and 'assistant_message' in df.columns:
+            logger.info("✅ Required columns found")
+        else:
+            logger.error("❌ Missing required columns: user_message, assistant_message")
+            sys.exit(1)
+        
+        # Limit data for debugging
+        if debug_mode:
+            df = df.head(20)  # Only 20 examples for quick testing
+            logger.info(f"🐛 Debug mode: Using only {len(df)} examples")
+        
+        logger.info("🏗️ Creating dataset...")
+        finetuning_dataset = FineTuningDataset(df)
+        finetuning_hf_dataset = finetuning_dataset.generate_dataset()
+        
+        logger.info("🤖 Starting fine-tuner...")
+        tuner = FineTuner(
+            modelName="cjvt/GaMS-1B",  # Start with smaller model
+            tokenizerName="cjvt/GaMS-1B",
+            dataset=finetuning_hf_dataset,
+            debug_mode=debug_mode
+        )
+        
+        logger.info("🎉 Pipeline completed successfully!")
+        logger.info(f"📋 Check log file: {log_file}")
+        
+    except Exception as e:
+        logger.error(f"💥 Pipeline failed: {str(e)}")
+        import traceback
+        logger.error(traceback.format_exc())
+        sys.exit(1)
