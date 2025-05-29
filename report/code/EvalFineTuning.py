@@ -36,7 +36,7 @@ def setup_logging():
 class Eval:
     def __init__(self, model_path="outputs", model_name="cjvt/GaMS-1B"):
         logger.info("📥 Loading dataset...")
-        df = pd.read_csv("report/code/trainingdataset.csv")
+        df = pd.read_csv("report/code/trainingdataset2.csv")
         finetuning_dataset = FineTuningDataset(df)
         self.dataset = finetuning_dataset.generate_dataset()
         
@@ -74,8 +74,8 @@ class Eval:
             print("SAMPLE: ", sample)
             text = sample.get('text', '')
             user_prompt, assistant_response = self.extract_prompt_and_response(text)
-            
-            logger.info(f"\n🧪 Example {idx + 1}")
+
+            logger.info(f"\n🧪 Example {idx + 1}" + "-"*50)
             logger.info(f"📝 Prompt: {user_prompt}")
             logger.info(f"🎯 Expected: {assistant_response}")
 

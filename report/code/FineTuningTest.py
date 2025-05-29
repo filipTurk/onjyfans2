@@ -3,7 +3,7 @@
 Quick test script to validate setup without full training
 Run this first to catch issues early!
 """
-
+print("IMPORTING /*")
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import pandas as pd
@@ -11,6 +11,22 @@ from datasets import Dataset
 from peft import LoraConfig, get_peft_model
 import sys
 import os
+import torch
+from transformers import pipeline, AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+import pandas as pd
+import random
+from datasets import Dataset
+import json
+from peft import LoraConfig, get_peft_model
+from transformers import TrainingArguments
+from trl import SFTTrainer
+from sklearn.model_selection import train_test_split
+import logging
+import sys
+import time
+from datetime import datetime
+import os
+
 
 def test_gpu_availability():
     print("=== GPU Test ===")
