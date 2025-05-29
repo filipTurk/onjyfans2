@@ -46,7 +46,7 @@ def setup_logging():
 logger, log_file = setup_logging()
 
 class FineTuner:
-    def __init__(self, modelName="cjvt/GaMS-1B", tokenizerName="cjvt/GaMS-1B", dataset=None, debug_mode=True):
+    def __init__(self, modelName="cjvt/GaMS-2B", tokenizerName="cjvt/GaMS-2B", dataset=None, debug_mode=True):
         self.debug_mode = debug_mode
         self.model_name = modelName
         self.tokenizer_name = tokenizerName
@@ -74,12 +74,11 @@ class FineTuner:
             # Test generation with base model
             logger.info("🧪 Testing base model generation...")
             self.pipeline = pipeline("text-generation", model=self.model, tokenizer=self.tokenizer)
-            test_output = self.generate_test_text(prompt="Hello, how are you?", max_length=50)
+            test_output = self.generate_test_text(prompt="Zdravo, kako si?")
             logger.info(f"Base model test: {test_output[:100]}...")
             
             # LoRA setup
             logger.info("🔧 Setting up LoRA configuration...")
-            self.max_seq_length = 512
             self.lora_alpha = 32
             self.lora_dropout = 0.1
             self.lora_r = 16
@@ -126,9 +125,39 @@ class FineTuner:
             logger.error(traceback.format_exc())
             raise
 
+    def evaluate_x_examples(self, x=5):
+        if not self.dataset:
+            logger.warning("⚠️ No dataset provided for evaluation.")
+            return
+
+        logger.info(f"🔍 Evaluating {x} random examples from dataset...")
+        
+        # Randomly sample from the dataset
+        samples = random.sample(self.dataset, min(x, len(self.dataset)))
+
+        for idx, sample in enumerate(samples):
+            prompt = sample.get('prompt') or sample.get('input') or ""
+            expected = sample.get('response') or sample.get('output') or "N/A"
+
+            logger.info(f"\n🧪 Example {idx + 1}")
+            logger.info(f"📝 Input: {prompt}")
+            logger.info(f"🎯 Expected: {expected}")
+
+            try:
+                generated = self.generate_test_text(prompt=prompt, max_length=500)  
+                logger.info(f"🤖 Generated: {generated}")
+            except Exception as e:
+                logger.error(f"❌ Generation failed: {e}")
+
+
+
     def init_trainer(self):
         logger.info("📊 Splitting dataset...")
-        train_data, eval_data = train_test_split(self.dataset, test_size=0.2, random_state=666)
+
+        split = self.dataset.train_test_split(test_size=0.2, seed=666)
+        train_data = split['train']
+        eval_data = split['test']
+
         logger.info(f"Train size: {len(train_data)}, Eval size: {len(eval_data)}")
         
         logger.info("⚙️ Creating trainer...")
@@ -138,9 +167,8 @@ class FineTuner:
             eval_dataset=eval_data,
             args=self.init_training_args(),
             peft_config=self.loadPeftConfig(),
-            tokenizer=self.tokenizer,
-            packing=False,  
-            max_seq_length=self.max_seq_length,
+            #tokenizer=self.tokenizer,
+            #packing=False,  
         )
         return trainer
 
@@ -166,8 +194,6 @@ class FineTuner:
             group_by_length=True,
             lr_scheduler_type="constant",
             report_to="none",
-            evaluation_strategy="steps",
-            eval_steps=25 if self.debug_mode else 100,
             save_total_limit=2,  # Keep only 2 checkpoints
             dataloader_num_workers=0,  # Avoid multiprocessing issues
         )
@@ -205,7 +231,7 @@ class FineTuner:
 
     def generate_test_text(self, prompt, max_length=100):
         try:
-            result = self.pipeline(prompt, max_length=max_length, do_sample=True, temperature=0.7)
+            result = self.pipeline(prompt)
             return result[0]['generated_text']
         except Exception as e:
             logger.error(f"Generation failed: {e}")
@@ -251,7 +277,15 @@ class FineTuningDataset:
         return input_text, output_text
     
     def get_prompt(self, example):
-        SYSTEM_PROMPT = "You are a helpful assistant that provides traffic information based on user queries."
+        SYSTEM_PROMPT = """Ti si radijski prometni napovedovalec. Na podlagi surovih vhodnih podatkov o prometu (nesreče, zapore cest, čakalne dobe na mejah, okvare vozil, vreme itd.) pripravi jasen, urejen in tekoč prometni pregled, primeren za radijsko oddajo.
+                            • Poročaj v formalnem, a razumljivem jeziku.
+                            • Najprej izpostavi najpomembnejše prometne dogodke (npr. nesreče ali popolne zapore).
+                            • Sledi poročanje po kategorijah (nesreče, okvare vozil, dela na cesti, meje).
+                            • Če je promet normalen, to omeni.
+                            • Ne kopiraj besedila dobesedno preoblikuj podatke v zgoščen in tekoč govor.
+                            • Časovno okvirjanje (npr. "popoldne", "v jutranji konici") je zaželeno.
+
+                            Vedno uporabi nevtralen ton in poročaj le relevantne informacije."""
         user_msg, assistant_msg = self.parse_input_output(example)
         
         formatted_text = f"<|system|>\n{SYSTEM_PROMPT}\n<|user|>\n{user_msg}\n<|assistant|>\n{assistant_msg}"
@@ -267,6 +301,7 @@ class FineTuningDataset:
         dataset = Dataset.from_list(self.prompts)
         logger.info(f"✅ Dataset ready: {len(dataset)} examples")
         return dataset
+
 
 if __name__ == "__main__":
     logger.info("=" * 60)
