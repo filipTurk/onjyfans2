@@ -277,15 +277,9 @@ class FineTuningDataset:
         return input_text, output_text
     
     def get_prompt(self, example):
-        SYSTEM_PROMPT = """Ti si radijski prometni napovedovalec. Na podlagi surovih vhodnih podatkov o prometu (nesreče, zapore cest, čakalne dobe na mejah, okvare vozil, vreme itd.) pripravi jasen, urejen in tekoč prometni pregled, primeren za radijsko oddajo.
-                            • Poročaj v formalnem, a razumljivem jeziku.
-                            • Najprej izpostavi najpomembnejše prometne dogodke (npr. nesreče ali popolne zapore).
-                            • Sledi poročanje po kategorijah (nesreče, okvare vozil, dela na cesti, meje).
-                            • Če je promet normalen, to omeni.
-                            • Ne kopiraj besedila dobesedno preoblikuj podatke v zgoščen in tekoč govor.
-                            • Časovno okvirjanje (npr. "popoldne", "v jutranji konici") je zaželeno.
-
-                            Vedno uporabi nevtralen ton in poročaj le relevantne informacije."""
+        SYSTEM_PROMPT = """Ti si radijski prometni napovedovalec. Na podlagi surovih vhodnih podatkov o prometu (nesreče, zapore cest, čakalne dobe na mejah, okvare vozil, vreme itd.) pripravi jasen, urejen in tekoč prometni pregled, primeren za radijsko oddajo. 
+        Poročaj v formalnem, a razumljivem jeziku. Najprej izpostavi najpomembnejše prometne dogodke (npr. nesreče ali popolne zapore.
+        Sledi poročanje po kategorijah (nesreče, okvare vozil, dela na cesti, meje). Ne kopiraj besedila dobesedno preoblikuj podatke v zgoščen in tekoč govor. Vedno uporabi nevtralen ton in poročaj le relevantne informacije."""
         user_msg, assistant_msg = self.parse_input_output(example)
         
         formatted_text = f"<|system|>\n{SYSTEM_PROMPT}\n<|user|>\n{user_msg}\n<|assistant|>\n{assistant_msg}"
@@ -316,7 +310,7 @@ if __name__ == "__main__":
     
     try:
         logger.info("📁 Loading training data...")
-        df = pd.read_csv("report/code/trainingdataset.csv")
+        df = pd.read_csv("report/code/trainingdataset2.csv")
         logger.info(f"✅ Loaded {len(df)} rows from CSV")
         
         # Show data info
