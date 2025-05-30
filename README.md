@@ -77,17 +77,49 @@ To evaluate the generated `evaluation_gams9b-02.csv` checkout Evaluation.ipynb
 ## Files and Directories
 
 ```
-project/
+ul-fri-nlp-course-project-2024-2025-onjyfans/
+├── evaluation_gams9b.csv                             #copied from hpc
+├── evaluation_gams9b-02.csv                          #copied from hpc
+├── outputs9B/
+├── LICENSE
+├── README.md
+├── requirements.txt                                  #pip install -r requirements.txt
 ├── report/
-│   └── code/
-│       ├── InitialAnalisys.ipynb
-│       ├── DataProcessAndAnalisys.ipynb
-│       └── FineTuningOnGoogleCollab.ipynb
-├── onj_fri/onjyfans/          # ARNES HPC training directory
-├── slurp-test.sh              # Environment testing script
-├── slurp.sh                   # Training script
-├── slurp-Eval.sh              # Evaluation script
-└── evaluation_dataset.csv     # Generated evaluation results
+│   ├── code/
+│   │   ├── DataProcessAndAnalisys.ipynb -            #local
+│   │   ├── EvalFineTuning.py                         #used for hpc
+│   │   ├── Evaluation.ipynb                          #local
+│   │   ├── FineTuning.py                             #used for hpc
+│   │   ├── FineTuningOnGoogleCollab.ipynb            #local
+│   │   ├── FineTuningTest.py                         #used for hpc
+│   │   ├── InitialAnalisys.ipynb                     #local
+│   │   ├── PredictAnExample.py                       #used for hpc
+│   │   └── data/
+│   │       ├── Joined_rtf_files.csv                  #Csv file containing joined parsed rtf files
+│   │       ├── PP_ALL.csv                            #Joined prometno porocilo (traffic report data)
+│   │       └── PP_sample.csv                         #just a sample of traffic report
+│   ├── results/
+│   └── trainingdataset2.csv                          #Main training dataset
+```
+
+hpc 
+
+```
+onjyfans/
+├── containers/                      # Singularity 
+├── evaluation_gams9b.csv            # Evaluation results 
+├── evaluation_gams9b-02.csv         # Evaluation results from a second run
+├── logs/                            # Directory for storing logs
+├── outputs/                         # Output directory from model training or inference
+├── results/                         # Final evaluation results, metrics, etc.
+├── slurp.sh                         # Main training script
+├── slurp-example.sh                 # Example prediction script
+├── slurp-test.sh                    # Script for testing environment before run
+├── slurp-eval.sh                    # Evaluation script that creates-> evaluation_gams9b-02.csv  
+├── training_logs/                   # Folder with multiple logs from different runs
+├── evaluation_gams9b.csv            
+├── evaluation_gams9b-02.csv         # Generate with slurp-eval.sh      
+
 ```
 
 ## Technical Requirements
