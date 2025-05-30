@@ -108,7 +108,7 @@ class Eval:
 
             try:
                 prompt = f"<|user|>\n{user_prompt}\n<|assistant|>\n"
-                generated_response = self.generate_test_text(prompt=prompt, max_length=500)
+                generated_response = self.generate_test_text(prompt=prompt, max_length=700)
                 generated_response = generated_response.split("<|assistant|>")[-1].strip()
                 torch.cuda.empty_cache()
                 gc.collect()
@@ -130,6 +130,6 @@ class Eval:
 
 if __name__ == "__main__": 
     e = Eval()
-    e.evaluate_x_examples(5)  # Optional: log samples
-    e.generate_evaluation_csv(output_path="evaluation_gams9b-02.csv", num_examples=1000)
+    #e.evaluate_x_examples(5)  # Optional: log samples
+    e.generate_evaluation_csv(output_path="evaluation_gams9b-02.csv", num_examples=10)
 
