@@ -35,22 +35,29 @@ This project focuses on generating Slovenian traffic news using large language m
 ### Environment Setup (ARNES HPC)
 
 Test the environment:
-```bash
-./slurp-test.sh
+```
+[onjyfans]$ slurp-test.sh
 ```
 
 ### Model Training
 
 Train the model:
-```bash
-./slurp.sh
+```
+[onjyfans]$ slurp.sh
 ```
 
 ### Model Evaluation
 
 Run evaluation:
-```bash
-./slurp-Eval.sh
+```
+[onjyfans]$ slurp-eval.sh
+```
+
+### Generate a prediction
+
+Run prediction: 
+```
+[onjyfans]$ slurp-example.sh
 ```
 
 This generates a CSV file containing:
@@ -60,17 +67,7 @@ This generates a CSV file containing:
 
 ### Further Evaluation
 
-To evaluate the generated `evaluation_dataset.csv`:
-```bash
-# TODO: Add command for further evaluation
-```
-
-### Testing Random Examples
-
-To test with random examples:
-```bash
-# TODO: Add command for random testing
-```
+To evaluate the generated `evaluation_gams9b-02.csv` checkout Evaluation.ipynb
 
 ## Models Used
 
@@ -95,7 +92,7 @@ project/
 
 ## Technical Requirements
 
-- Python 3.8+
+- Python 3.9+
 - Jupyter Notebook environment
 - Google Colab access (for GaMS-1B training)
 - ARNES HPC cluster access (for GaMS-9B-Instruct training)
@@ -108,8 +105,8 @@ project/
 3. **Model Training**: 
    - For GaMS-1B: Use Google Colab notebook
    - For GaMS-9B-Instruct: Use ARNES HPC cluster scripts
-4. **Evaluation**: Run evaluation scripts to generate performance metrics
-5. **Testing**: Use provided scripts to test model outputs
+4. **Evaluation**: Run Evaluation.ipynb scripts to generate performance metrics and inspect generated evalutions during training
+5. **Testing**: Use provided scripts on hpc to test random examples outputs
 
 ## Output
 
