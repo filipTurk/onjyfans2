@@ -7,6 +7,7 @@ import logging
 from datetime import datetime
 import random
 import re
+import gc
 
 #change datasetfilepath beforerun
 #changemodelname
@@ -15,35 +16,30 @@ import re
 def setup_logging():
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_file = f"training_log_{timestamp}.log"
-    
     formatter = logging.Formatter(
         '%(asctime)s - %(levelname)s - %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
-    
     file_handler = logging.FileHandler(log_file)
     file_handler.setFormatter(formatter)
-    
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setFormatter(formatter)
-    
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
-    
     return logger, log_file
 
 #logger, log_file = setup_logging()
 
 class Eval:
-    def __init__(self, model_path="outputs", model_name="cjvt/GaMS-9B-Instruct"):
+    def __init__(self, model_path="ul-fri-nlp-course-project-2024-2025-onjyfans/hpc_results/outputs", model_name="cjvt/GaMS-9B-Instruct"):
         logger.info("📥 Loading dataset...")
         df = pd.read_csv("ul-fri-nlp-course-project-2024-2025-onjyfans/report/code/trainingdataset2.csv")
         self.original_df = df  # Keep original for CSV export
         finetuning_dataset = FineTuningDataset(df)
         self.dataset = finetuning_dataset.generate_dataset()
-        
+
         logger.info("🤖 Loading model and tokenizer...")
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForCausalLM.from_pretrained(model_path, torch_dtype=torch.float16, device_map="auto")
@@ -65,10 +61,8 @@ class Eval:
     def extract_prompt_and_response(self, text):
         user_match = re.search(r'<\|user\|>\s*(.*?)\s*<\|assistant\|>', text, re.DOTALL)
         assistant_match = re.search(r'<\|assistant\|>\s*(.*)', text, re.DOTALL)
-        
         user_msg = user_match.group(1).strip() if user_match else ""
         assistant_msg = assistant_match.group(1).strip() if assistant_match else "N/A"
-        
         return user_msg, assistant_msg
 
     def evaluate_x_examples(self, x=5):
@@ -92,10 +86,14 @@ class Eval:
             try:
                 prompt = f"<|user|>\n{user_prompt}\n<|assistant|>\n"
                 generated = self.generate_test_text(prompt=prompt, max_length=500)
-                generated = generated.split("<|assistant|>")[-1].strip()
+                torch.cuda.empty_cache()
+                gc.collect()
                 logger.info(f"🤖 Generated: {generated}")
             except Exception as e:
                 logger.error(f"❌ Generation failed: {e}")
+                torch.cuda.empty_cache()
+                gc.collect()
+
 
     def generate_evaluation_csv(self, output_path="evaluation.csv", num_examples=20):
         logger.info(f"📄 Generating evaluation CSV with {num_examples} examples...")
@@ -108,13 +106,17 @@ class Eval:
             text = sample.get('text', '')
             user_prompt, expected_response = self.extract_prompt_and_response(text)
 
-            try:                                                                                                                                                                                       
+            try:
                 prompt = f"<|user|>\n{user_prompt}\n<|assistant|>\n"
-                generated_response = self.generate_test_text(prompt=prompt, max_length=500) 
-                generated_response = generated_response.split("<|assistant|>")[-1].strip()                                                         
+                generated_response = self.generate_test_text(prompt=prompt, max_length=700)
+                generated_response = generated_response.split("<|assistant|>")[-1].strip()
+                torch.cuda.empty_cache()
+                gc.collect()
             except Exception as e:
                 logger.error(f"❌ Generation failed for one sample: {e}")
                 generated_response = "Generation failed"
+                torch.cuda.empty_cache()
+                gc.collect()
 
             eval_rows.append({
                 "user_message": user_prompt,
@@ -128,6 +130,6 @@ class Eval:
 
 if __name__ == "__main__": 
     e = Eval()
-    e.evaluate_x_examples(5)  # Optional: log samples
-    e.generate_evaluation_csv(output_path="evaluation_gams9b.csv", num_examples=20)
+    #e.evaluate_x_examples(5)  # Optional: log samples
+    e.generate_evaluation_csv(output_path="evaluation_gams9b-02.csv", num_examples=10)
 
