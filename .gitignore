@@ -133,3 +133,5 @@ report/data/*
 report/code/PP_ALL.csv
 
 report/code/data/*
+
+results/*

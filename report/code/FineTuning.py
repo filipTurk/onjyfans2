@@ -332,8 +332,8 @@ if __name__ == "__main__":
         
         logger.info("🤖 Starting fine-tuner...")
         tuner = FineTuner(
-            modelName="cjvt/GaMS-27B-Instruct",  # Start with smaller model
-            tokenizerName="cjvt/GaMS-27B-Instruct",
+            modelName="cjvt/GaMS-9B-Instruct",  # Start with smaller model
+            tokenizerName="cjvt/GaMS-9B-Instruct",
             dataset=finetuning_hf_dataset,
             debug_mode=debug_mode
         )
