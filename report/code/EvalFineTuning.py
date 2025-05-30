@@ -37,7 +37,7 @@ def setup_logging():
 #logger, log_file = setup_logging()
 
 class Eval:
-    def __init__(self, model_path="outputs", model_name="cjvt/GaMS-9B-Instruct"):
+    def __init__(self, model_path="ul-fri-nlp-course-project-2024-2025-onjyfans/hpc_results/outputs", model_name="cjvt/GaMS-9B-Instruct"):
         logger.info("📥 Loading dataset...")
         df = pd.read_csv("ul-fri-nlp-course-project-2024-2025-onjyfans/report/code/trainingdataset2.csv")
         self.original_df = df  # Keep original for CSV export
@@ -129,5 +129,5 @@ class Eval:
 if __name__ == "__main__": 
     e = Eval()
     e.evaluate_x_examples(5)  # Optional: log samples
-    e.generate_evaluation_csv(output_path="evaluation_gams9b.csv", num_examples=20)
+    e.generate_evaluation_csv(output_path="evaluation_gams9b.csv", num_examples=1000)
 
