@@ -310,7 +310,7 @@ if __name__ == "__main__":
     
     try:
         logger.info("📁 Loading training data...")
-        df = pd.read_csv("report/code/trainingdataset2.csv")
+        df = pd.read_csv("ul-fri-nlp-course-project-2024-2025-onjyfans/report/code/trainingdataset2.csv")
         logger.info(f"✅ Loaded {len(df)} rows from CSV")
         
         # Show data info
@@ -332,8 +332,8 @@ if __name__ == "__main__":
         
         logger.info("🤖 Starting fine-tuner...")
         tuner = FineTuner(
-            modelName="cjvt/GaMS-1B",  # Start with smaller model
-            tokenizerName="cjvt/GaMS-1B",
+            modelName="cjvt/GaMS-27B-Instruct",  # Start with smaller model
+            tokenizerName="cjvt/GaMS-27B-Instruct",
             dataset=finetuning_hf_dataset,
             debug_mode=debug_mode
         )
