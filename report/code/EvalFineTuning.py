@@ -86,14 +86,13 @@ class Eval:
             try:
                 prompt = f"<|user|>\n{user_prompt}\n<|assistant|>\n"
                 generated = self.generate_test_text(prompt=prompt, max_length=500)
-                generated = generated.split("<|assistant|>")[-1].strip()
-		torch.cuda.empty_cache()
-		gc.collect()
+                torch.cuda.empty_cache()
+                gc.collect()
                 logger.info(f"🤖 Generated: {generated}")
             except Exception as e:
                 logger.error(f"❌ Generation failed: {e}")
-		torch.cuda.empty_cache()
-		gc.collect()
+                torch.cuda.empty_cache()
+                gc.collect()
 
 
     def generate_evaluation_csv(self, output_path="evaluation.csv", num_examples=20):
@@ -111,13 +110,13 @@ class Eval:
                 prompt = f"<|user|>\n{user_prompt}\n<|assistant|>\n"
                 generated_response = self.generate_test_text(prompt=prompt, max_length=500)
                 generated_response = generated_response.split("<|assistant|>")[-1].strip()
-		torch.cuda.empty_cache()
-		gc.collect()
+                torch.cuda.empty_cache()
+                gc.collect()
             except Exception as e:
                 logger.error(f"❌ Generation failed for one sample: {e}")
                 generated_response = "Generation failed"
-		torch.cuda.empty_cache()
-		gc.collect()
+                torch.cuda.empty_cache()
+                gc.collect()
 
             eval_rows.append({
                 "user_message": user_prompt,
