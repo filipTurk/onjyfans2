@@ -15,12 +15,12 @@ This project focuses on generating Slovenian traffic news using large language m
 #### Data Processing and Analysis
 - **Location**: `report/code/DataProcessAndAnalisys.ipynb`
 - **Purpose**: Further analysis and training dataset creation
-
+                              
 ### Model Training and Evaluation
 
 #### GaMS-1B Model Training
 - **Location**: `report/code/FineTuningOnGoogleCollab.ipynb`
-- **Platform**: Google Colab
+- **Platform**: Google Colab                  
 - **Methods**: 
   - Fine-tuning
   - One-shot prompting
