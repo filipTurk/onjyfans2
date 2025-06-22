@@ -1,0 +1,66 @@
+NLP.
+
+
+DATA PREPARATION AND STRATEGY: 
+	-Inconsistent data hierarchy hinders results 
+	-JSON input - can i write rules that cover 80% of my dataset
+	-pipeline models better than end to end,
+	-UTC and rtf UTC +2
+	-FIrst match then reconstruct into a semantic whole  and then into json objects 
+	-translate the data and then translate back 
+	-somehow imprve input data idk how, maybe timestamp phrases yesterday and today... neko soslednje kako naj ve 
+  	-like i could focus on how different preprocessing methods affect the end results 
+
+    	-groundtruth data is not consistent with road naming, can we fix that ? 
+	-TEMP 0.4  rp=1.2 je blo ako najbolš 
+
+INITIALIZING TRAINING: 
+	-prompt engennering 
+	-hyperparameter finetuning
+	-Lora qlora, peft
+	-What is masking 
+	-max sequence possible ? 
+
+EVALUATION:
+	Human evaultaions - create a metric tschimmy 
+	human generation too tschimmy 
+	Using Appropriate Metrics: Metrics like Precision-Recall AUC, F1-score, and Cohen’s Kappa
+	are more informative than accuracy when dealing with imbalanced datasets.
+	
+
+
+
+maybe prepare a few different dataset with completely different json inputs along with semanticaly preprocessed actual text
+
+TEMP 0.4  rp=1.2 je blo ako najbolš 
+
+human eval for sure 
+human generation too  
+
+can i write rules that cover 80% of my dataset ? ( because weiting all the reules would be a nightmare 
+Once i have the new dataset prepcoessed i can compare how much the new preprocessing helped ? 
+like i could focus on how different preprocessing methods affect the end results 
+
+
+1. Research: 
+
+***********/https://arxiv.org/pdf/2402.12267v1*************
+bleu scoresmight not be trusted on unederresausrec llms in data to text gen 
+https://arxiv.org/pdf/2402.12267v1
+https://arxiv.org/pdf/2408.13296
+https://arxiv.org/pdf/2401.02981
+https://pdf.sciencedirectassets.com/782808/1-s2.0-S2949761224X0005X/1-s2.0-S2949761224001147/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAYaCXVzLWVhc3QtMSJHMEUCIQCCS%2Bw2lWxxGwJghGvmWfa2PY%2FrciJxbcKegSEuOUsCaAIgJzsOSw%2FJh6hf7FYqTVbUAdv2NdyfjwTqj5bILLJEMUoqvAUI7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAFGgwwNTkwMDM1NDY4NjUiDA9EQ%2BEwjzLHahrzlSqQBeweimDGaRc3gRDPN2E39CZmp76GBbIRnQxhTN1HaW23Bq%2FZaZ5B7NrQq6U%2Bz2c2PqLK%2FNHJ4d7xRO%2FevmjmRXEZTJdbLWyQdr7%2BTgYY5Sf6o5yxDqmMHZPGE%2BnmUW8qDC%2FKMceDKkibkgvJNAirAECaj52IteyKkHA%2Bk7vmDWOLsE0fn17o0gP3ebfZzzkNSwnxauBp9tVJoCHOUi8QTcR6lBpEB46iP%2BT4C8YYcvLvK%2BSEIz3rGEQf4jOUtbm%2F3biW6nKSQAIGycaZIFS2gZQvRPxMQ3tMXTTGH9nGKVH2NHiH0HcFFf0Dx5n2YeMV3QoLwxgY9pvLD8ph4Zda6ZptACc3Wxc8CZ00HF1vVAe2w%2FbYWqlv3CkCL4F30JY7VX8avIGFAH0kYEXqnB8qQqVb%2BMTrwlf%2BQ33RHUGXmQOXKbBXqH8OyepNfST%2FYtnHxwbwG5x4FSzzKFFB%2FsICmc8C1pY%2FAKjC9gh4tNHkJSYrdss4j2qzUYt8U%2Fgs%2Bm%2BskSpj7liFwoXWdoFD35vNSz9rZNdfMbRUwzubvKAQOkVPy1q1qKb1QAzK6Bhs8GPSJ6lliEFx496O1ECkgn9rNdGl6YmpDrfOSF18KjBmObf7FUrpZn1dnPTRawOwAo6qApEE9c3wQqq99C4N0pqUJjk%2BvsI%2BcrqymxRd5gNIHgD1yZIBzqCBW6imnhwTx7ux2RPisueUPu7Qhcph2EO4ez2ofXU79KGJQ%2F2lbFck3%2Fak1aPoyaqAwp%2Biq7wO7Dovf2923gSZkGONyXtpkIgmYsPHGevqKSCWSjs1%2BfEgf9rkB5EhJ7Ay6fyzb5nbceiB3X%2FoNfxavQm%2BFCsLGCBEEFQYeXVXCwms9%2FDGxV04nq6ZMJuT4MIGOrEBELsyG6mUJTEpdQcSA39q5c0RFtQvhSoWWjEGKAogu2gHXKV5Ozzqexb4ZDxfY7C87LO6YjSE%2Ffp5vDFRu6pNyCGVkmO4uYxy61J2C1nkueWj7IKTJRDh6w3i4TmQOg6lnU9i%2By2%2F%2FBSzIkdPTHTxUEpRX4zZ3804XGH68w235XQ8S9ZiLXCXlYW5ukXUqd8%2FjJBF7TML3MQHKVwGikEnN6iPqvnEqAMkudt80Tpwq9pE&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250622T154713Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYQ5JP3GYF%2F20250622%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ad6d2f98cd6a2e188337f130dbd129f536d52b6e0181d5c1f57c1f1b57feeb56&hash=5f6765f2c302899d96eb185f9ba5c74cf507d67374e6a78eac80c1fd8f93e052&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S2949761224001147&tid=spdf-265e7ec0-74e3-4050-b40c-2fcce4b9e461&sid=579bab5f2786c6462d1b34f1f8ef55ba20ffgxrqb&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&rh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=090f5d535703025652575b&rr=953ce2078bf43614&cc=si
+https://link.springer.com/chapter/10.1007/978-3-030-45439-5_5
+https://arxiv.org/pdf/2005.10433v2
+***********/*************
+
+***********/*************
+
+***********/*************
+
+***********/*************
+
+***********/*************
+
+***********/*************
+ 
