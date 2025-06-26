@@ -1,0 +1,578 @@
+model_choice,input_message,input_json_str,output_json_str,output_message,Semantic_similarity_score,prompt,system_instruction,response,bert_score,BLEU_1_score,BLEU_2_score,BLEU_3_score,BLEU_4_score,human_factual,human_relevance,human_grammar,human_readability,human_completeness,human_timeliness
+gemini-2.5-flash,"Na ljubljanski severni obvoznici potekajo dela med Zadobrovo in Tomačevim. Med Novimi Jaršami in Zadobrovo promet proti Zaloški poteka po dveh zoženih pasovih. ljubljanski severni obvoznici Pred predorom Karavanke proti Avstriji, 3 kilometra. Na cestah Lucija - Strunjan in Šmarje - Koper. Na cesti Lesce - Bled. Na primorski avtocesti je med Uncem in Ravbarkomando zaprt prehitevalni pas zaradi prometne nesreče. Nastaja zastoj. Na vseh cestah med Kozino in območjem Socerba in Ospa bo zaradi dovoza vode na požarišče povečano število cistern. Opozarjamo: intervencijska vozila imajo tu di v tem primeru prednost . Zaprte ceste zaradi gašenja požara na Primorskem: - regionalna cesta Črni Kal - Gabrovica pri Črnem Kalu - Osp - meja z Italijo; - lokalna cesta med Črnim Kalom in Staro Gabrovico; - ter lokalna cesta na relaciji avtocestni priključek Kastelec - vas Kastelec - Socerb - meja z Italijo. Čakalna doba: Sečovlje, Dragonja, Sočerga, Starod, Jelšane, Obrežje in Gruškovje. 11-08-2022 10:13:00","{
+  ""Delo na cesti"": ""Na ljubljanski severni obvoznici potekajo dela med Zadobrovo in Tomačevim. Med Novimi Jaršami in Zadobrovo promet proti Zaloški poteka po dveh zoženih pasovih. ljubljanski severni obvoznici"",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": ""Pred predorom Karavanke proti Avstriji, 3 kilometra. Na cestah Lucija - Strunjan in Šmarje - Koper. Na cesti Lesce - Bled."",
+  ""Ovire"": """",
+  ""Nesreče"": ""Na primorski avtocesti je med Uncem in Ravbarkomando zaprt prehitevalni pas zaradi prometne nesreče. Nastaja zastoj."",
+  ""Vreme"": """",
+  ""Opozorila"": ""Na vseh cestah med Kozino in območjem Socerba in Ospa bo zaradi dovoza vode na požarišče povečano število cistern. Opozarjamo: intervencijska vozila imajo tu di v tem primeru prednost . Zaprte ceste zaradi gašenja požara na Primorskem: - regionalna cesta Črni Kal - Gabrovica pri Črnem Kalu - Osp - meja z Italijo; - lokalna cesta med Črnim Kalom in Staro Gabrovico; - ter lokalna cesta na relaciji avtocestni priključek Kastelec - vas Kastelec - Socerb - meja z Italijo."",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": ""Čakalna doba: Sečovlje, Dragonja, Sočerga, Starod, Jelšane, Obrežje in Gruškovje."",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""11-08-2022 10:13:00""
+}","{
+  ""Delo na cesti"": """",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": ""Na ljubljanski južni obvoznici je zaradi pokvarjenega vozila zaprt prehitevalni pas pred priključkom Ljubljana center proti Primorski. Krajši zastoj je na gorenjski avtocesti mimo priključka Lesce proti Karavankam."",
+  ""Ovire"": """",
+  ""Nesreče"": """",
+  ""Opozorila"": """",
+  ""Vreme"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": ""Na mejnih prehodih Dragonja in Sečovlje vozniki osebnih vozil na vstop v državo čakajo do eno uro, v Jelšanah pa do pol ure."",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""Timestamp"": ""2022-08-11 09:30:00""
+}","Na ljubljanski južni obvoznici je zaradi pokvarjenega vozila zaprt prehitevalni pas pred priključkom Ljubljana center proti Primorski. Krajši zastoj je na gorenjski avtocesti mimo priključka Lesce proti Karavankam. Na mejnih prehodih Dragonja in Sečovlje vozniki osebnih vozil na vstop v državo čakajo do eno uro, v Jelšanah pa do pol ure.",0.7805923223495483,"
+                Deluješ kot poročevalec prometnih informacij za radijsko postajo. 
+Na podlagi vhodnih podatkov generiraj kratko in neposredno besedilo v katerem povzameš le najpomembnejše informacije.
+
+                **Vhodno sporočilo:**
+                Na ljubljanski severni obvoznici potekajo dela med Zadobrovo in Tomačevim. Med Novimi Jaršami in Zadobrovo promet proti Zaloški poteka po dveh zoženih pasovih. ljubljanski severni obvoznici Pred predorom Karavanke proti Avstriji, 3 kilometra. Na cestah Lucija - Strunjan in Šmarje - Koper. Na cesti Lesce - Bled. Na primorski avtocesti je med Uncem in Ravbarkomando zaprt prehitevalni pas zaradi prometne nesreče. Nastaja zastoj. Na vseh cestah med Kozino in območjem Socerba in Ospa bo zaradi dovoza vode na požarišče povečano število cistern. Opozarjamo: intervencijska vozila imajo tu di v tem primeru prednost . Zaprte ceste zaradi gašenja požara na Primorskem: - regionalna cesta Črni Kal - Gabrovica pri Črnem Kalu - Osp - meja z Italijo; - lokalna cesta med Črnim Kalom in Staro Gabrovico; - ter lokalna cesta na relaciji avtocestni priključek Kastelec - vas Kastelec - Socerb - meja z Italijo. Čakalna doba: Sečovlje, Dragonja, Sočerga, Starod, Jelšane, Obrežje in Gruškovje. 11-08-2022 10:13:00
+                **Vhodni JSON podatki:**
+                {
+  ""Delo na cesti"": ""Na ljubljanski severni obvoznici potekajo dela med Zadobrovo in Tomačevim. Med Novimi Jaršami in Zadobrovo promet proti Zaloški poteka po dveh zoženih pasovih. ljubljanski severni obvoznici"",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": ""Pred predorom Karavanke proti Avstriji, 3 kilometra. Na cestah Lucija - Strunjan in Šmarje - Koper. Na cesti Lesce - Bled."",
+  ""Ovire"": """",
+  ""Nesreče"": ""Na primorski avtocesti je med Uncem in Ravbarkomando zaprt prehitevalni pas zaradi prometne nesreče. Nastaja zastoj."",
+  ""Vreme"": """",
+  ""Opozorila"": ""Na vseh cestah med Kozino in območjem Socerba in Ospa bo zaradi dovoza vode na požarišče povečano število cistern. Opozarjamo: intervencijska vozila imajo tu di v tem primeru prednost . Zaprte ceste zaradi gašenja požara na Primorskem: - regionalna cesta Črni Kal - Gabrovica pri Črnem Kalu - Osp - meja z Italijo; - lokalna cesta med Črnim Kalom in Staro Gabrovico; - ter lokalna cesta na relaciji avtocestni priključek Kastelec - vas Kastelec - Socerb - meja z Italijo."",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": ""Čakalna doba: Sečovlje, Dragonja, Sočerga, Starod, Jelšane, Obrežje in Gruškovje."",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""11-08-2022 10:13:00""
+}
+            ",/,"Dober dan vsem poslušalcem, preverimo stanje na cestah.
+
+Najprej na Primorsko, kjer zaradi gašenja požara veljajo posebne razmere. Med Kozino, Socerbom in Ospom je povečano število cistern, zato bodite še posebej pozorni in omogočite prednost intervencijskim vozilom. Zaradi požara so popolnoma zaprte ceste: regionalna cesta Črni Kal – Gabrovica pri Črnem Kalu – Osp – meja z Italijo, lokalna cesta med Črnim Kalom in Staro Gabrovico ter lokalna cesta Kastelec – Socerb – meja z Italijo.
+
+Na primorski avtocesti med Uncem in Ravbarkomando je zaradi prometne nesreče zaprt prehitevalni pas, nastaja zastoj.
+
+Zastoj je tudi pred predorom Karavanke proti Avstriji, dolg je 3 kilometre. Pričakujte zastoje tudi na cestah Lucija - Strunjan, Šmarje - Koper in Lesce - Bled.
+
+Na ljubljanski severni obvoznici potekajo dela med Zadobrovo in Tomačevim. Med Novimi Jaršami in Zadobrovo promet proti Zaloški poteka po dveh zoženih pasovih.
+
+Na mejnih prehodih so trenutno čakalne dobe na Sečovljah, Dragonji, Sočergi, Starodu, Jelšanah, Obrežju in Gruškovju.
+
+Želimo vam varno vožnjo in se slišimo ob naslednjem poročilu.",0.8502892255783081,0.1130952380952381,0.05819007624081034,0.028324654574142096,0.015864557826981127,5,3,5,5,5,5
+gemini-2.5-flash,"Vipavska hitra cesta je med Vipavo in Nanosom proti Razdrtemu ponovno odprta. Popolno zaporo so umaknili, ostaja zaprt prehitevalni pas. Cesta Litija - Zagorje bo zaprta pri Šklendrovcu vsako soboto med 7:30 in 13:30 do septembra 2023. Tovorni promet Do 22. ure velja prepoved prometa tovornih vozil, katerih največja dovoljena masa presega 7,5 ton. Regionalna cesta Pesnica - Maribor, bivša hitra cesta skozi Maribor , je med krožiščem Pesnica proti Mariboru je ponovno odprta. Ostaja zaradi odstranjevanja posledic gorečega vozila zaprt vozni pas. Na primorski avtocesti je v predoru Kastelec proti Ljubljani zaprt vozni pas zaradi okvare vozila. Cesta čez prelaz Vršič je prevozna samo za osebna vozila z zimsko opremo. 12-03-2023 13:26:00","{
+  ""Delo na cesti"": ""Vipavska hitra cesta je med Vipavo in Nanosom proti Razdrtemu ponovno odprta. Popolno zaporo so umaknili, ostaja zaprt prehitevalni pas. Cesta Litija - Zagorje bo zaprta pri Šklendrovcu vsako soboto med 7:30 in 13:30 do septembra 2023. Tovorni promet Do 22. ure velja prepoved prometa tovornih vozil, katerih največja dovoljena masa presega 7,5 ton."",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": """",
+  ""Ovire"": ""Regionalna cesta Pesnica - Maribor, bivša hitra cesta skozi Maribor , je med krožiščem Pesnica proti Mariboru je ponovno odprta. Ostaja zaradi odstranjevanja posledic gorečega vozila zaprt vozni pas. Na primorski avtocesti je v predoru Kastelec proti Ljubljani zaprt vozni pas zaradi okvare vozila."",
+  ""Nesreče"": """",
+  ""Vreme"": """",
+  ""Opozorila"": """",
+  ""Zimske razmere"": ""Cesta čez prelaz Vršič je prevozna samo za osebna vozila z zimsko opremo."",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""12-03-2023 13:26:00""
+}","{
+  ""Delo na cesti"": """",
+  ""Dela"": ""Še vedno pa je zaradi vozila, ki je gorelo, med krožiščem Pesnica in priključkom Pesnica zaprt vozni pas."",
+  ""Delovne zapore"": ""Še vedno pa je zaradi vozila, ki je gorelo, med krožiščem Pesnica in priključkom Pesnica zaprt vozni pas."",
+  ""Popolne zapore"": """",
+  ""Zastoji"": """",
+  ""Ovire"": """",
+  ""Nesreče"": """",
+  ""Opozorila"": ""Vipavska hitra cesta proti Razdrtemu bo zaradi del do 20 ih zaprta med Vipavo in Nanosom. Obvoz je po vzporedni regionalni cesti."",
+  ""Vreme"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": ""Regionalna cesta Pesnica Maribor je proti Mariboru spet prevozna."",
+  ""Timestamp"": ""2023-03-12 13:30:00""
+}","Regionalna cesta Pesnica Maribor je proti Mariboru spet prevozna. Še vedno pa je zaradi vozila, ki je gorelo, med krožiščem Pesnica in priključkom Pesnica zaprt vozni pas. Vipavska hitra cesta proti Razdrtemu bo zaradi del do 20 ih zaprta med Vipavo in Nanosom. Obvoz je po vzporedni regionalni cesti.",0.7356893420219421,"
+                Deluješ kot poročevalec prometnih informacij za radijsko postajo. 
+Na podlagi vhodnih podatkov generiraj kratko in neposredno besedilo v katerem povzameš le najpomembnejše informacije.
+
+                **Vhodno sporočilo:**
+                Vipavska hitra cesta je med Vipavo in Nanosom proti Razdrtemu ponovno odprta. Popolno zaporo so umaknili, ostaja zaprt prehitevalni pas. Cesta Litija - Zagorje bo zaprta pri Šklendrovcu vsako soboto med 7:30 in 13:30 do septembra 2023. Tovorni promet Do 22. ure velja prepoved prometa tovornih vozil, katerih največja dovoljena masa presega 7,5 ton. Regionalna cesta Pesnica - Maribor, bivša hitra cesta skozi Maribor , je med krožiščem Pesnica proti Mariboru je ponovno odprta. Ostaja zaradi odstranjevanja posledic gorečega vozila zaprt vozni pas. Na primorski avtocesti je v predoru Kastelec proti Ljubljani zaprt vozni pas zaradi okvare vozila. Cesta čez prelaz Vršič je prevozna samo za osebna vozila z zimsko opremo. 12-03-2023 13:26:00
+                **Vhodni JSON podatki:**
+                {
+  ""Delo na cesti"": ""Vipavska hitra cesta je med Vipavo in Nanosom proti Razdrtemu ponovno odprta. Popolno zaporo so umaknili, ostaja zaprt prehitevalni pas. Cesta Litija - Zagorje bo zaprta pri Šklendrovcu vsako soboto med 7:30 in 13:30 do septembra 2023. Tovorni promet Do 22. ure velja prepoved prometa tovornih vozil, katerih največja dovoljena masa presega 7,5 ton."",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": """",
+  ""Ovire"": ""Regionalna cesta Pesnica - Maribor, bivša hitra cesta skozi Maribor , je med krožiščem Pesnica proti Mariboru je ponovno odprta. Ostaja zaradi odstranjevanja posledic gorečega vozila zaprt vozni pas. Na primorski avtocesti je v predoru Kastelec proti Ljubljani zaprt vozni pas zaradi okvare vozila."",
+  ""Nesreče"": """",
+  ""Vreme"": """",
+  ""Opozorila"": """",
+  ""Zimske razmere"": ""Cesta čez prelaz Vršič je prevozna samo za osebna vozila z zimsko opremo."",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""12-03-2023 13:26:00""
+}
+            ",/,"Dober dan vsem na cestah! Poglejmo, kaj se dogaja v prometu.
+
+Na Primorski avtocesti je v predoru Kastelec proti Ljubljani zaprt vozni pas zaradi okvare vozila.
+
+Na regionalni cesti Pesnica - Maribor, nekdanji hitri cesti, je med krožiščem Pesnica proti Mariboru ponovno odprto, vendar ostaja zaprt vozni pas zaradi odstranjevanja posledic gorečega vozila.
+
+Vipavska hitra cesta je med Vipavo in Nanosom proti Razdrtemu ponovno odprta, a je še vedno zaprt prehitevalni pas.
+
+Cesta čez prelaz Vršič je prevozna samo za osebna vozila z zimsko opremo.
+
+Opozarjamo tudi na prepoved prometa za tovorna vozila nad 7,5 tone, ki velja do 22. ure.
+
+In še opozorilo za prihodnje sobote: Cesta Litija - Zagorje bo pri Šklendrovcu zaprta vsako soboto med 7:30 in 13:30, in sicer do septembra 2023.
+
+Želimo vam varno vožnjo!",0.8816096186637878,0.23076923076923078,0.12688648033134406,0.07418649544566124,0.034678621442294805,5,5,5,5,5,5
+gemini-2.5-flash,"na gorenjski avtocesti med Brezjami in Lescami. Predvidoma od četrtka, 3.11., bo zaprt priključek Lesce iz smeri Jesenic proti Ljubljani. Obvoz bo preko Radovljice. med Brezjami in Lescami. Več o delovnih zaporah, prometna napoved. Več o delovnih zaporah, prometna napoved. - Zaprti sta cesti Bovec - Kobarid, v Kobaridu in Most na Soči - Tolmin v Tolminu. Na primorski avtocesti med Brezovico in Vrhniko proti Kopru je zaprt prehitevalni pas. Nastaja zastoj, zamuda 20 minut. Zastoj Na ljubljanski južni obvoznici od Viča mimo Kozarij proti Brezovici. Na primorski avtocesti pred Divačo proti Kopru, zamuda: do 30 minut. Obvoz za osebna vozila je možen po regionalni cesti Senožeče - Kozina. Na gorenjski avtocesti na izvozu Lesce iz smeri Ljubljane in naprej proti Bledu. Na regionalni cesti Vič - Brezovica. Tovorni promet Danes in jutri, v torek, jutri, velja omejitev prometa tovornih vozil, katerih največja dovoljena masa presega 7,5 t., med 8. in 22. uro. 31-10-2022 09:50:00","{
+  ""Delo na cesti"": """",
+  ""Dela"": ""na gorenjski avtocesti med Brezjami in Lescami. Predvidoma od četrtka, 3.11., bo zaprt priključek Lesce iz smeri Jesenic proti Ljubljani. Obvoz bo preko Radovljice. med Brezjami in Lescami. Več o delovnih zaporah, prometna napoved. Več o delovnih zaporah, prometna napoved."",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": ""- Zaprti sta cesti Bovec - Kobarid, v Kobaridu in Most na Soči - Tolmin v Tolminu."",
+  ""Zastoji"": """",
+  ""Ovire"": """",
+  ""Nesreče"": ""Na primorski avtocesti med Brezovico in Vrhniko proti Kopru je zaprt prehitevalni pas. Nastaja zastoj, zamuda 20 minut. Zastoj Na ljubljanski južni obvoznici od Viča mimo Kozarij proti Brezovici. Na primorski avtocesti pred Divačo proti Kopru, zamuda: do 30 minut. Obvoz za osebna vozila je možen po regionalni cesti Senožeče - Kozina. Na gorenjski avtocesti na izvozu Lesce iz smeri Ljubljane in naprej proti Bledu. Na regionalni cesti Vič - Brezovica. Tovorni promet Danes in jutri, v torek, jutri, velja omejitev prometa tovornih vozil, katerih največja dovoljena masa presega 7,5 t., med 8. in 22. uro."",
+  ""Vreme"": """",
+  ""Opozorila"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""31-10-2022 09:50:00""
+}","{
+  ""Delo na cesti"": """",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": ""Zastoji so na pomurski avtocesti proti Lendavi med razcepom Dragučova in priključkom Pernica."",
+  ""Ovire"": """",
+  ""Nesreče"": ""Na dolenjski avtocesti proti Ljubljani je zaradi prometne nesreče oviran promet med priključkoma Bič in Ivančna Gorica. Na štajerski avtocesti proti Mariboru pa promet zaradi nesreče ni več oviran med priključkom Slovenska Bistrica sever in počivališčem Polskava."",
+  ""Opozorila"": """",
+  ""Vreme"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": ""Danes in jutri od 8 ih do 22 ih velja omejitev prometa tovornih vozil, katerih največja dovoljena masa presega 7 ton in pol."",
+  ""leftover_html"": """",
+  ""Timestamp"": ""2022-10-31 09:30:00""
+}","Na dolenjski avtocesti proti Ljubljani je zaradi prometne nesreče oviran promet med priključkoma Bič in Ivančna Gorica. Na štajerski avtocesti proti Mariboru pa promet zaradi nesreče ni več oviran med priključkom Slovenska Bistrica sever in počivališčem Polskava. Zastoji so na pomurski avtocesti proti Lendavi med razcepom Dragučova in priključkom Pernica. Danes in jutri od 8 ih do 22 ih velja omejitev prometa tovornih vozil, katerih največja dovoljena masa presega 7 ton in pol.",0.7401599884033203,"
+                Deluješ kot poročevalec prometnih informacij za radijsko postajo. 
+Na podlagi vhodnih podatkov generiraj kratko in neposredno besedilo v katerem povzameš le najpomembnejše informacije.
+
+                **Vhodno sporočilo:**
+                na gorenjski avtocesti med Brezjami in Lescami. Predvidoma od četrtka, 3.11., bo zaprt priključek Lesce iz smeri Jesenic proti Ljubljani. Obvoz bo preko Radovljice. med Brezjami in Lescami. Več o delovnih zaporah, prometna napoved. Več o delovnih zaporah, prometna napoved. - Zaprti sta cesti Bovec - Kobarid, v Kobaridu in Most na Soči - Tolmin v Tolminu. Na primorski avtocesti med Brezovico in Vrhniko proti Kopru je zaprt prehitevalni pas. Nastaja zastoj, zamuda 20 minut. Zastoj Na ljubljanski južni obvoznici od Viča mimo Kozarij proti Brezovici. Na primorski avtocesti pred Divačo proti Kopru, zamuda: do 30 minut. Obvoz za osebna vozila je možen po regionalni cesti Senožeče - Kozina. Na gorenjski avtocesti na izvozu Lesce iz smeri Ljubljane in naprej proti Bledu. Na regionalni cesti Vič - Brezovica. Tovorni promet Danes in jutri, v torek, jutri, velja omejitev prometa tovornih vozil, katerih največja dovoljena masa presega 7,5 t., med 8. in 22. uro. 31-10-2022 09:50:00
+                **Vhodni JSON podatki:**
+                {
+  ""Delo na cesti"": """",
+  ""Dela"": ""na gorenjski avtocesti med Brezjami in Lescami. Predvidoma od četrtka, 3.11., bo zaprt priključek Lesce iz smeri Jesenic proti Ljubljani. Obvoz bo preko Radovljice. med Brezjami in Lescami. Več o delovnih zaporah, prometna napoved. Več o delovnih zaporah, prometna napoved."",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": ""- Zaprti sta cesti Bovec - Kobarid, v Kobaridu in Most na Soči - Tolmin v Tolminu."",
+  ""Zastoji"": """",
+  ""Ovire"": """",
+  ""Nesreče"": ""Na primorski avtocesti med Brezovico in Vrhniko proti Kopru je zaprt prehitevalni pas. Nastaja zastoj, zamuda 20 minut. Zastoj Na ljubljanski južni obvoznici od Viča mimo Kozarij proti Brezovici. Na primorski avtocesti pred Divačo proti Kopru, zamuda: do 30 minut. Obvoz za osebna vozila je možen po regionalni cesti Senožeče - Kozina. Na gorenjski avtocesti na izvozu Lesce iz smeri Ljubljane in naprej proti Bledu. Na regionalni cesti Vič - Brezovica. Tovorni promet Danes in jutri, v torek, jutri, velja omejitev prometa tovornih vozil, katerih največja dovoljena masa presega 7,5 t., med 8. in 22. uro."",
+  ""Vreme"": """",
+  ""Opozorila"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""31-10-2022 09:50:00""
+}
+            ",/,"Pozor, vozniki! Poročamo o stanju na cestah:
+
+Na primorski avtocesti med Brezovico in Vrhniko proti Kopru je zaprt prehitevalni pas, nastaja zastoj z 20-minutno zamudo. Zastoj je tudi na ljubljanski južni obvoznici od Viča mimo Kozarij proti Brezovici. Pred Divačo proti Kopru je na primorski avtocesti zamuda do 30 minut, obvoz za osebna vozila je možen po regionalni cesti Senožeče - Kozina.
+
+Popolnoma sta zaprti cesti Bovec - Kobarid v Kobaridu in Most na Soči - Tolmin v Tolminu.
+
+Na gorenjski avtocesti bo predvidoma od četrtka, 3. novembra, zaprt priključek Lesce iz smeri Jesenic proti Ljubljani. Obvoz bo preko Radovljice.
+
+In še opozorilo za tovorna vozila: Danes in jutri, v torek, velja omejitev prometa za tovorna vozila nad 7,5 tone, med 8. in 22. uro.
+
+Srečno vožnjo!",0.8482763171195984,0.17322834645669294,0.06422214913443078,0.03319645332699322,0.01894805862354589,3,3,4,3,4,4
+gemini-2.5-flash,". Na vipavski hitri cesti je med Nanosom in Selom zaradi burje prepovedan promet za počitniške prikolice, hladilnike in vozila s ponjavami do 8 ton. : - Prepoved za priklopnike in polpriklopnike je na cesti Col - Črni Vrh - Godovič. - Cesta čez prelaz Vršič je prevozna samo za osebna vozila z verigami. Tovorna vozila Omejitev za tovorna vozila, katerih največja dovoljena masa presega 7,5 t v času božično - novoletnih praznikov, dnevno med 8. in 22. uro: - v četrtek, danes; - v nedeljo, 29. decembra; - ter v sredo in četrtek, 1. in 2. januarja 2025. 26-12-2024 12:50:00","{
+  ""Delo na cesti"": """",
+  ""Dela"": """",
+  ""Delovne zapore"": ""."",
+  ""Popolne zapore"": """",
+  ""Zastoji"": """",
+  ""Ovire"": """",
+  ""Nesreče"": """",
+  ""Vreme"": ""Na vipavski hitri cesti je med Nanosom in Selom zaradi burje prepovedan promet za počitniške prikolice, hladilnike in vozila s ponjavami do 8 ton."",
+  ""Opozorila"": """",
+  ""Zimske razmere"": "": - Prepoved za priklopnike in polpriklopnike je na cesti Col - Črni Vrh - Godovič. - Cesta čez prelaz Vršič je prevozna samo za osebna vozila z verigami. Tovorna vozila Omejitev za tovorna vozila, katerih največja dovoljena masa presega 7,5 t v času božično - novoletnih praznikov, dnevno med 8. in 22. uro: - v četrtek, danes; - v nedeljo, 29. decembra; - ter v sredo in četrtek, 1. in 2. januarja 2025."",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""26-12-2024 12:50:00""
+}","{
+  ""Delo na cesti"": """",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": ""Zastoj je na gorenjski avtocesti proti Karavankam pri izvozu za Kranjsko Goro."",
+  ""Ovire"": """",
+  ""Nesreče"": """",
+  ""Opozorila"": """",
+  ""Vreme"": ""Na vipavski hitri cesti je med Nanosom in Selom zaradi burje prepovedan promet za hladilnike in vozila s ponjavami do osmih ton."",
+  ""Zimske razmere"": ""Zaradi zimskih razmer velja na cesti Col Črni Vrh Godovič prepoved za priklopnike in polpriklopnike. Cesta čez prelaz Vršič je prevozna samo za osebna vozila z verigami."",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": ""Do 22 ih pa velja omejitev prometa tovornih vozil, katerih največja dovoljena masa presega 7 ton in pol."",
+  ""leftover_html"": """",
+  ""Timestamp"": ""2024-12-26 13:00:00""
+}","Zastoj je na gorenjski avtocesti proti Karavankam pri izvozu za Kranjsko Goro. Na vipavski hitri cesti je med Nanosom in Selom zaradi burje prepovedan promet za hladilnike in vozila s ponjavami do osmih ton. Zaradi zimskih razmer velja na cesti Col Črni Vrh Godovič prepoved za priklopnike in polpriklopnike. Cesta čez prelaz Vršič je prevozna samo za osebna vozila z verigami. Do 22 ih pa velja omejitev prometa tovornih vozil, katerih največja dovoljena masa presega 7 ton in pol.",0.8897662162780762,"
+                Deluješ kot poročevalec prometnih informacij za radijsko postajo. 
+Na podlagi vhodnih podatkov generiraj kratko in neposredno besedilo v katerem povzameš le najpomembnejše informacije.
+
+                **Vhodno sporočilo:**
+                . Na vipavski hitri cesti je med Nanosom in Selom zaradi burje prepovedan promet za počitniške prikolice, hladilnike in vozila s ponjavami do 8 ton. : - Prepoved za priklopnike in polpriklopnike je na cesti Col - Črni Vrh - Godovič. - Cesta čez prelaz Vršič je prevozna samo za osebna vozila z verigami. Tovorna vozila Omejitev za tovorna vozila, katerih največja dovoljena masa presega 7,5 t v času božično - novoletnih praznikov, dnevno med 8. in 22. uro: - v četrtek, danes; - v nedeljo, 29. decembra; - ter v sredo in četrtek, 1. in 2. januarja 2025. 26-12-2024 12:50:00
+                **Vhodni JSON podatki:**
+                {
+  ""Delo na cesti"": """",
+  ""Dela"": """",
+  ""Delovne zapore"": ""."",
+  ""Popolne zapore"": """",
+  ""Zastoji"": """",
+  ""Ovire"": """",
+  ""Nesreče"": """",
+  ""Vreme"": ""Na vipavski hitri cesti je med Nanosom in Selom zaradi burje prepovedan promet za počitniške prikolice, hladilnike in vozila s ponjavami do 8 ton."",
+  ""Opozorila"": """",
+  ""Zimske razmere"": "": - Prepoved za priklopnike in polpriklopnike je na cesti Col - Črni Vrh - Godovič. - Cesta čez prelaz Vršič je prevozna samo za osebna vozila z verigami. Tovorna vozila Omejitev za tovorna vozila, katerih največja dovoljena masa presega 7,5 t v času božično - novoletnih praznikov, dnevno med 8. in 22. uro: - v četrtek, danes; - v nedeljo, 29. decembra; - ter v sredo in četrtek, 1. in 2. januarja 2025."",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""26-12-2024 12:50:00""
+}
+            ",/,"Pozor vozniki!
+
+Omejitev za tovorna vozila nad 7,5 tone velja danes, v četrtek, med 8. in 22. uro. Prav tako bo veljala v nedeljo, 29. decembra, ter v sredo in četrtek, 1. in 2. januarja 2025.
+
+Na vipavski hitri cesti med Nanosom in Selom je zaradi burje prepovedan promet za počitniške prikolice, hladilnike in vozila s ponjavami do 8 ton.
+
+Na cesti Col - Črni Vrh - Godovič je prepoved za priklopnike in polpriklopnike.
+
+Cesta čez prelaz Vršič je prevozna samo za osebna vozila z verigami.
+
+Varno vožnjo!",0.9009090662002563,0.5340909090909091,0.45009577524850386,0.397867050169982,0.3507286832065057,5,5,5,4,5,5
+gemini-2.5-flash,"Zaprte ceste: - Na gorenjski avtocesti je zaprt priključek Brezje, izvoz iz smeri Jesenic in uvoz proti Ljubljani . - Na dolenjski avtocesti je zaprt priključek Višnja Gora proti Ljubljani do predvidoma 20. ure. Obvoz iz smeri Novega mesta je preko priključka Ivančna Gorica, obvoz proti Ljubljani pa preko Peščenika do priključka Grosuplja vzhod (motel) ter nazaj na avtocesto. - Glavna cesta Slovenska Bistrica - Ptuj je zaprta med Hajdino in odcepom za Cirkovce do 19. novembra do 19. ure. Obvoz je urejen po podravski in štajerski avtocesti na relaciji Hajdina - Slivnica - Slovenska Bistrica sever v obe smeri, tudi za vozila brez vinjet. - Cesta Novo mesto - Metlika je pri Vinji vasi zaprta predvidoma do petka, pojutrišnjem, do 17. ure. Napoved popolnih zapor - Od pojutrišnjem od 8. ure do 14. novembra do 17. ure bo zaprta regionalna cesta Vodice - Spodnji Brnik. Obvoz bo preko naselja Moste. V času prometnih konic so možni zastoji. - V soboto 12. novembra ob 6. uri bodo zaprli cesto Brezovica - Podpeč, v Notranjih goricah na železniškem prehodu. Zapora bo predvidoma do nedelje do 22. ure. - Cesta Lesce - Kamna Gorica - Lipnica bo zaprta od 12. novembra od 7. ure do 13. novembra do 19. Več o delovnih zaporah, prometna napoved. Več o delovnih zaporah, prometna napoved. Glavna cesta Ljubljana - Kočevje, med Ribnico in Kočevjem, pri Rakitnici je odprta. 09-11-2022 16:52:00","{
+  ""Delo na cesti"": ""Zaprte ceste: - Na gorenjski avtocesti je zaprt priključek Brezje, izvoz iz smeri Jesenic in uvoz proti Ljubljani . - Na dolenjski avtocesti je zaprt priključek Višnja Gora proti Ljubljani do predvidoma 20. ure. Obvoz iz smeri Novega mesta je preko priključka Ivančna Gorica, obvoz proti Ljubljani pa preko Peščenika do priključka Grosuplja vzhod (motel) ter nazaj na avtocesto. - Glavna cesta Slovenska Bistrica - Ptuj je zaprta med Hajdino in odcepom za Cirkovce do 19. novembra do 19. ure. Obvoz je urejen po podravski in štajerski avtocesti na relaciji Hajdina - Slivnica - Slovenska Bistrica sever v obe smeri, tudi za vozila brez vinjet. - Cesta Novo mesto - Metlika je pri Vinji vasi zaprta predvidoma do petka, pojutrišnjem, do 17. ure. Napoved popolnih zapor - Od pojutrišnjem od 8. ure do 14. novembra do 17. ure bo zaprta regionalna cesta Vodice - Spodnji Brnik. Obvoz bo preko naselja Moste. V času prometnih konic so možni zastoji. - V soboto 12. novembra ob 6. uri bodo zaprli cesto Brezovica - Podpeč, v Notranjih goricah na železniškem prehodu. Zapora bo predvidoma do nedelje do 22. ure. - Cesta Lesce - Kamna Gorica - Lipnica bo zaprta od 12. novembra od 7. ure do 13. novembra do 19. Več o delovnih zaporah, prometna napoved. Več o delovnih zaporah, prometna napoved."",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": """",
+  ""Ovire"": """",
+  ""Nesreče"": ""Glavna cesta Ljubljana - Kočevje, med Ribnico in Kočevjem, pri Rakitnici je odprta."",
+  ""Vreme"": """",
+  ""Opozorila"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""09-11-2022 16:52:00""
+}","{
+  ""Delo na cesti"": """",
+  ""Dela"": ""Na dolenjski avtocesti proti Ljubljani je zaradi del zaprt priključek Višnja Gora, na gorenjski avtocesti pa priključek Brezje, prav tako proti Ljubljani.."",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": ""Na dolenjski avtocesti proti Ljubljani je zaradi del zaprt priključek Višnja Gora, na gorenjski avtocesti pa priključek Brezje, prav tako proti Ljubljani.."",
+  ""Zastoji"": """",
+  ""Ovire"": """",
+  ""Nesreče"": """",
+  ""Opozorila"": ""Zaradi odstranjevanja posledic prometne nesreče je še vedno zaprta glavna cesta Ljubljana Kočevje, med Ribnico in Kočevjem pri Rakitnici. Obvoz je po lokalnih cestah ali prek Gotenice."",
+  ""Vreme"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": ""Na mejnih prehodih Obrežje in Gruškovje vozniki tovornih vozil na vstop v državo čakajo približno dve uri."",
+  ""leftover_html"": """",
+  ""Timestamp"": ""2022-11-09 17:30:00""
+}","Zaradi odstranjevanja posledic prometne nesreče je še vedno zaprta glavna cesta Ljubljana Kočevje, med Ribnico in Kočevjem pri Rakitnici. Obvoz je po lokalnih cestah ali prek Gotenice. Na dolenjski avtocesti proti Ljubljani je zaradi del zaprt priključek Višnja Gora, na gorenjski avtocesti pa priključek Brezje, prav tako proti Ljubljani.. Na mejnih prehodih Obrežje in Gruškovje vozniki tovornih vozil na vstop v državo čakajo približno dve uri.",0.9066929817199708,"
+                Deluješ kot poročevalec prometnih informacij za radijsko postajo. 
+Na podlagi vhodnih podatkov generiraj kratko in neposredno besedilo v katerem povzameš le najpomembnejše informacije.
+
+                **Vhodno sporočilo:**
+                Zaprte ceste: - Na gorenjski avtocesti je zaprt priključek Brezje, izvoz iz smeri Jesenic in uvoz proti Ljubljani . - Na dolenjski avtocesti je zaprt priključek Višnja Gora proti Ljubljani do predvidoma 20. ure. Obvoz iz smeri Novega mesta je preko priključka Ivančna Gorica, obvoz proti Ljubljani pa preko Peščenika do priključka Grosuplja vzhod (motel) ter nazaj na avtocesto. - Glavna cesta Slovenska Bistrica - Ptuj je zaprta med Hajdino in odcepom za Cirkovce do 19. novembra do 19. ure. Obvoz je urejen po podravski in štajerski avtocesti na relaciji Hajdina - Slivnica - Slovenska Bistrica sever v obe smeri, tudi za vozila brez vinjet. - Cesta Novo mesto - Metlika je pri Vinji vasi zaprta predvidoma do petka, pojutrišnjem, do 17. ure. Napoved popolnih zapor - Od pojutrišnjem od 8. ure do 14. novembra do 17. ure bo zaprta regionalna cesta Vodice - Spodnji Brnik. Obvoz bo preko naselja Moste. V času prometnih konic so možni zastoji. - V soboto 12. novembra ob 6. uri bodo zaprli cesto Brezovica - Podpeč, v Notranjih goricah na železniškem prehodu. Zapora bo predvidoma do nedelje do 22. ure. - Cesta Lesce - Kamna Gorica - Lipnica bo zaprta od 12. novembra od 7. ure do 13. novembra do 19. Več o delovnih zaporah, prometna napoved. Več o delovnih zaporah, prometna napoved. Glavna cesta Ljubljana - Kočevje, med Ribnico in Kočevjem, pri Rakitnici je odprta. 09-11-2022 16:52:00
+                **Vhodni JSON podatki:**
+                {
+  ""Delo na cesti"": ""Zaprte ceste: - Na gorenjski avtocesti je zaprt priključek Brezje, izvoz iz smeri Jesenic in uvoz proti Ljubljani . - Na dolenjski avtocesti je zaprt priključek Višnja Gora proti Ljubljani do predvidoma 20. ure. Obvoz iz smeri Novega mesta je preko priključka Ivančna Gorica, obvoz proti Ljubljani pa preko Peščenika do priključka Grosuplja vzhod (motel) ter nazaj na avtocesto. - Glavna cesta Slovenska Bistrica - Ptuj je zaprta med Hajdino in odcepom za Cirkovce do 19. novembra do 19. ure. Obvoz je urejen po podravski in štajerski avtocesti na relaciji Hajdina - Slivnica - Slovenska Bistrica sever v obe smeri, tudi za vozila brez vinjet. - Cesta Novo mesto - Metlika je pri Vinji vasi zaprta predvidoma do petka, pojutrišnjem, do 17. ure. Napoved popolnih zapor - Od pojutrišnjem od 8. ure do 14. novembra do 17. ure bo zaprta regionalna cesta Vodice - Spodnji Brnik. Obvoz bo preko naselja Moste. V času prometnih konic so možni zastoji. - V soboto 12. novembra ob 6. uri bodo zaprli cesto Brezovica - Podpeč, v Notranjih goricah na železniškem prehodu. Zapora bo predvidoma do nedelje do 22. ure. - Cesta Lesce - Kamna Gorica - Lipnica bo zaprta od 12. novembra od 7. ure do 13. novembra do 19. Več o delovnih zaporah, prometna napoved. Več o delovnih zaporah, prometna napoved."",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": """",
+  ""Ovire"": """",
+  ""Nesreče"": ""Glavna cesta Ljubljana - Kočevje, med Ribnico in Kočevjem, pri Rakitnici je odprta."",
+  ""Vreme"": """",
+  ""Opozorila"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""09-11-2022 16:52:00""
+}
+            ",/,"Pozor, vozniki! Pripravili smo najnovejše prometne informacije:
+
+**Trenutne zapore:**
+
+*   Na gorenjski avtocesti je zaprt priključek Brezje, in sicer izvoz iz smeri Jesenic in uvoz proti Ljubljani.
+*   Na dolenjski avtocesti je zaprt priključek Višnja Gora proti Ljubljani, predvidoma do 20. ure. Obvoz je urejen.
+*   Glavna cesta med Slovensko Bistrico in Ptujem je zaprta med Hajdino in odcepom za Cirkovce, in sicer do 19. novembra do 19. ure. Obvoz je urejen po avtocesti, tudi za vozila brez vinjete.
+*   Cesta Novo mesto - Metlika je pri Vinji vasi zaprta predvidoma do petka do 17. ure.
+
+**Napovedane zapore:**
+
+*   Pojutrišnjem, od 8. ure dalje, bo do 14. novembra do 17. ure zaprta regionalna cesta Vodice - Spodnji Brnik. Obvoz bo preko Most. V času prometnih konic so tam možni zastoji.
+*   V soboto, 12. novembra, ob 6. uri zjutraj bodo zaprli cesto Brezovica - Podpeč, na železniškem prehodu v Notranjih goricah. Zapora bo trajala predvidoma do nedelje do 22. ure.
+*   Prav tako v soboto, 12. novembra, bo od 7. ure dalje do nedelje, 13. novembra, do 19. ure, zaprta cesta Lesce - Kamna Gorica - Lipnica.
+
+**Dobra novica:**
+
+*   Glavna cesta Ljubljana - Kočevje, pri Rakitnici med Ribnico in Kočevjem, je ponovno odprta.
+
+Srečno in varno vožnjo!",0.8625872135162354,0.14903846153846154,0.08485237579576983,0.048617438753378574,0.022858213947224315,3,3,4,5,4,5
+gemini-2.5-flash,"Cesta Ljubljana, Šentvid - Vodice je v Tacnu na Cesti vstaje zaprta zaradi gradnje kanalizacije, predvidoma do 11. 6. 2023. Obvoz je po gorenjski avtocesti tudi za vozila brez vinjete, vendar samo med priključkoma Brod in Šmartno v obe smeri. Na dolenjski avtocesti bo predvidoma do 17. junija zaprt priključek Bič proti Novemu mestu. Cesta Črnivec - Radmirje bo zaprta do predvidoma 9. junija. V Ljubljani je na Dunajski cesti na območju nadvoza čez hitro cesto iz vseh smeri možno samo desno zavijanje . V Ljubljani je na Dunajski cesti na območju nadvoza čez hitro cesto iz vseh smeri možno samo desno zavijanje . . Na gorenjski avtocesti pred predorom Karavanke proti Avstriji, približno 5 kilometra, sega mimo izvoza Jesenice zahod. Občasno predor zaradi varnosti zapirajo. Na primorski avtocesti od Logatca proti Ljubljani na posameznih odsekih, zamuda 15 minut. Na cestah Šmarje - Koper in Hrpelje - Kozina. Na štajerski avtocesti med Blagovico in Trojanami proti Mariboru, zamuda 10 minut. Na vzhodni ljubljanski obvoznici je zaprt predor Golovec proti Zadobrovi, previsoko vozilo. 29-05-2023 17:14:00","{
+  ""Delo na cesti"": ""Cesta Ljubljana, Šentvid - Vodice je v Tacnu na Cesti vstaje zaprta zaradi gradnje kanalizacije, predvidoma do 11. 6. 2023. Obvoz je po gorenjski avtocesti tudi za vozila brez vinjete, vendar samo med priključkoma Brod in Šmartno v obe smeri. Na dolenjski avtocesti bo predvidoma do 17. junija zaprt priključek Bič proti Novemu mestu. Cesta Črnivec - Radmirje bo zaprta do predvidoma 9. junija. V Ljubljani je na Dunajski cesti na območju nadvoza čez hitro cesto iz vseh smeri možno samo desno zavijanje . V Ljubljani je na Dunajski cesti na območju nadvoza čez hitro cesto iz vseh smeri možno samo desno zavijanje . ."",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": ""Na gorenjski avtocesti pred predorom Karavanke proti Avstriji, približno 5 kilometra, sega mimo izvoza Jesenice zahod. Občasno predor zaradi varnosti zapirajo. Na primorski avtocesti od Logatca proti Ljubljani na posameznih odsekih, zamuda 15 minut. Na cestah Šmarje - Koper in Hrpelje - Kozina. Na štajerski avtocesti med Blagovico in Trojanami proti Mariboru, zamuda 10 minut."",
+  ""Ovire"": ""Na vzhodni ljubljanski obvoznici je zaprt predor Golovec proti Zadobrovi, previsoko vozilo."",
+  ""Nesreče"": """",
+  ""Vreme"": """",
+  ""Opozorila"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""29-05-2023 17:14:00""
+}","{
+  ""Delo na cesti"": """",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": ""Na štajerski avtocesti proti Mariboru je zaradi nesreče zaprt vozni pas med priključkoma Lukovica in Blagovica. Še vedno je tam 10 kilometrov dolg zastoj. Zastoji so še vedno na primorski avtocesti proti Ljubljani na več odsekih med Logatcem in Brezovico, na južni ljubljanski obvoznici proti Dolenjski ter na glavni cesti od Šmarij proti Dragonji."",
+  ""Ovire"": ""Na podravski avtocesti proti Gruškovju je zaradi pokvarjenega tovornjaka promet oviran pred razcepom Draženci."",
+  ""Nesreče"": """",
+  ""Opozorila"": ""Potovalni čas se podaljša za 1 uro Proti Ljubljani so odstranili posledice nesreče med priključkoma Celje center in Celje zahod."",
+  ""Vreme"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""Timestamp"": ""2023-05-29 18:00:00""
+}","Na štajerski avtocesti proti Mariboru je zaradi nesreče zaprt vozni pas med priključkoma Lukovica in Blagovica. Še vedno je tam 10 kilometrov dolg zastoj. Potovalni čas se podaljša za 1 uro Proti Ljubljani so odstranili posledice nesreče med priključkoma Celje center in Celje zahod. Zastoji so še vedno na primorski avtocesti proti Ljubljani na več odsekih med Logatcem in Brezovico, na južni ljubljanski obvoznici proti Dolenjski ter na glavni cesti od Šmarij proti Dragonji. Na podravski avtocesti proti Gruškovju je zaradi pokvarjenega tovornjaka promet oviran pred razcepom Draženci.",0.8171436786651611,"
+                Deluješ kot poročevalec prometnih informacij za radijsko postajo. 
+Na podlagi vhodnih podatkov generiraj kratko in neposredno besedilo v katerem povzameš le najpomembnejše informacije.
+
+                **Vhodno sporočilo:**
+                Cesta Ljubljana, Šentvid - Vodice je v Tacnu na Cesti vstaje zaprta zaradi gradnje kanalizacije, predvidoma do 11. 6. 2023. Obvoz je po gorenjski avtocesti tudi za vozila brez vinjete, vendar samo med priključkoma Brod in Šmartno v obe smeri. Na dolenjski avtocesti bo predvidoma do 17. junija zaprt priključek Bič proti Novemu mestu. Cesta Črnivec - Radmirje bo zaprta do predvidoma 9. junija. V Ljubljani je na Dunajski cesti na območju nadvoza čez hitro cesto iz vseh smeri možno samo desno zavijanje . V Ljubljani je na Dunajski cesti na območju nadvoza čez hitro cesto iz vseh smeri možno samo desno zavijanje . . Na gorenjski avtocesti pred predorom Karavanke proti Avstriji, približno 5 kilometra, sega mimo izvoza Jesenice zahod. Občasno predor zaradi varnosti zapirajo. Na primorski avtocesti od Logatca proti Ljubljani na posameznih odsekih, zamuda 15 minut. Na cestah Šmarje - Koper in Hrpelje - Kozina. Na štajerski avtocesti med Blagovico in Trojanami proti Mariboru, zamuda 10 minut. Na vzhodni ljubljanski obvoznici je zaprt predor Golovec proti Zadobrovi, previsoko vozilo. 29-05-2023 17:14:00
+                **Vhodni JSON podatki:**
+                {
+  ""Delo na cesti"": ""Cesta Ljubljana, Šentvid - Vodice je v Tacnu na Cesti vstaje zaprta zaradi gradnje kanalizacije, predvidoma do 11. 6. 2023. Obvoz je po gorenjski avtocesti tudi za vozila brez vinjete, vendar samo med priključkoma Brod in Šmartno v obe smeri. Na dolenjski avtocesti bo predvidoma do 17. junija zaprt priključek Bič proti Novemu mestu. Cesta Črnivec - Radmirje bo zaprta do predvidoma 9. junija. V Ljubljani je na Dunajski cesti na območju nadvoza čez hitro cesto iz vseh smeri možno samo desno zavijanje . V Ljubljani je na Dunajski cesti na območju nadvoza čez hitro cesto iz vseh smeri možno samo desno zavijanje . ."",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": ""Na gorenjski avtocesti pred predorom Karavanke proti Avstriji, približno 5 kilometra, sega mimo izvoza Jesenice zahod. Občasno predor zaradi varnosti zapirajo. Na primorski avtocesti od Logatca proti Ljubljani na posameznih odsekih, zamuda 15 minut. Na cestah Šmarje - Koper in Hrpelje - Kozina. Na štajerski avtocesti med Blagovico in Trojanami proti Mariboru, zamuda 10 minut."",
+  ""Ovire"": ""Na vzhodni ljubljanski obvoznici je zaprt predor Golovec proti Zadobrovi, previsoko vozilo."",
+  ""Nesreče"": """",
+  ""Vreme"": """",
+  ""Opozorila"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""29-05-2023 17:14:00""
+}
+            ",/,"Pozdravljeni v prometni oddaji! Preverimo stanje na cestah:
+
+**Zapore in dela:**
+
+*   V Tacnu je zaradi gradnje kanalizacije zaprta Cesta vstaje, predvidoma do 11. junija. Obvoz je po gorenjski avtocesti med priključkoma Brod in Šmartno, tudi za vozila brez vinjete.
+*   Na dolenjski avtocesti bo predvidoma do 17. junija zaprt priključek Bič proti Novemu mestu.
+*   Cesta Črnivec - Radmirje je zaprta do predvidoma 9. junija.
+*   V Ljubljani je na Dunajski cesti pri nadvozu čez hitro cesto iz vseh smeri možno samo desno zavijanje.
+*   Na vzhodni ljubljanski obvoznici je proti Zadobrovi zaprt predor Golovec zaradi previsokega vozila.
+
+**Zastoji:**
+
+*   Na gorenjski avtocesti pred predorom Karavanke proti Avstriji je kolona dolga približno 5 kilometrov. Občasno predor zaradi varnosti zapirajo.
+*   Na primorski avtocesti od Logatca proti Ljubljani so na posameznih odsekih zamude do 15 minut.
+*   Na štajerski avtocesti med Blagovico in Trojanami proti Mariboru je zamuda 10 minut.
+*   Zastoji so tudi na cestah Šmarje - Koper in Hrpelje - Kozina.
+
+Previdno na cestah!",0.8677135109901428,0.25301204819277107,0.12987482388637941,0.06072505404580965,0.02834063478691335,2,3,2,3,2,3
+gemini-2.5-flash,"ta vikend: - v Ljubljani bo Litijska cesta med Kajuhovo ulico in Parmsko cesto, vključno s križiščem Parmska/ Litijska, zaprta do nedelje, pojutrišnjem, do 18. ure. - v Ljubljani bo zaprta Vilharjeva cesta od sobote, jutri, od 6. ure do ponedeljka, 18. septembra, do 5. ure. - V soboto, jutri, bo med 7. in 17. uro zaprta cesta Polica - Podtabor v Podbrezju zaradi urejanja odvodnjavanja. - Cesta Velenje - Škale bo zaprta pri Škalah v soboto, jutri, od 7. ure dalje so nedelje, pojutrišnjem, do 17. ure zaradi asfaltiranja. Na dolenjski avtocesti med Trebnjim in Kronovim bo do 22. septembra promet potekal po enem pasu, v času prometnih konic so možni zastoji. Več o urniku zapor . Več o urniku zapor Do ponedeljka, 18. septembra, bo zaprta cesta Bogojina - Gančani, v Bogojini, zaradi gradnje krožišča in avtobusnih postajališč. . Ujma 2023 - Stahovica - Gornji Grad. - Podlom - Kranjski Rak - Luče. - Luče - Ljubno ob Savinji. - Dravograd - Trbonje. Več o zaporah na zemljevidu. Na primorski avtocesti od Postojne proti Ljubljani, zamuda najmanj 30 minut. Proti Primorski skozi razcep Kozarje iz obeh smeri, zamuda 30 minut. Na štajerski avtocesti od Šentjakoba proti ljubljanski vzhodni obvoznici in naprej proti Golovcu. Na ljubljanski obvoznici od Kosez proti Kozarjam. Na cestah Logatec - Vrhnika, Vrhnika - Brezovica. V Ljubljani, na cestah v okolici popolne zapore na Litijski cesti. 15-09-2023 15:32:00","{
+  ""Delo na cesti"": """",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": ""ta vikend: - v Ljubljani bo Litijska cesta med Kajuhovo ulico in Parmsko cesto, vključno s križiščem Parmska/ Litijska, zaprta do nedelje, pojutrišnjem, do 18. ure. - v Ljubljani bo zaprta Vilharjeva cesta od sobote, jutri, od 6. ure do ponedeljka, 18. septembra, do 5. ure. - V soboto, jutri, bo med 7. in 17. uro zaprta cesta Polica - Podtabor v Podbrezju zaradi urejanja odvodnjavanja. - Cesta Velenje - Škale bo zaprta pri Škalah v soboto, jutri, od 7. ure dalje so nedelje, pojutrišnjem, do 17. ure zaradi asfaltiranja. Na dolenjski avtocesti med Trebnjim in Kronovim bo do 22. septembra promet potekal po enem pasu, v času prometnih konic so možni zastoji. Več o urniku zapor . Več o urniku zapor Do ponedeljka, 18. septembra, bo zaprta cesta Bogojina - Gančani, v Bogojini, zaradi gradnje krožišča in avtobusnih postajališč. . Ujma 2023 - Stahovica - Gornji Grad. - Podlom - Kranjski Rak - Luče. - Luče - Ljubno ob Savinji. - Dravograd - Trbonje. Več o zaporah na zemljevidu."",
+  ""Zastoji"": ""Na primorski avtocesti od Postojne proti Ljubljani, zamuda najmanj 30 minut. Proti Primorski skozi razcep Kozarje iz obeh smeri, zamuda 30 minut. Na štajerski avtocesti od Šentjakoba proti ljubljanski vzhodni obvoznici in naprej proti Golovcu. Na ljubljanski obvoznici od Kosez proti Kozarjam. Na cestah Logatec - Vrhnika, Vrhnika - Brezovica. V Ljubljani, na cestah v okolici popolne zapore na Litijski cesti."",
+  ""Ovire"": """",
+  ""Nesreče"": """",
+  ""Vreme"": """",
+  ""Opozorila"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""15-09-2023 15:32:00""
+}","{
+  ""Delo na cesti"": """",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": ""Na primorski avtocesti so zastoji na več odsekih od Postojne proti Ljubljani. Čas vožnje se na celotnem odseku podaljša za približno 45 minut. Prav tako so zastoji na zahodni ljubljanski obvoznici proti Brezovici, na južni obvoznici proti Dolenjski, na štajerski avtocesti od Domžal proti Ljubljani ter na regionalnih cestah Lesce Bled in Logatec Vrhnika na Vrhniki. Na pomurski avtocesti so zaradi del zastoji med razcepom Dragučova in priključkom Pernica. Potovalni čas se podaljša za 20 minut. Opozarjamo na nevarnost naleta."",
+  ""Ovire"": ""Na štajerski avtocesti proti Ljubljani je zaradi pokvarjenega vozila promet oviran pred uvozom Lukovica."",
+  ""Nesreče"": """",
+  ""Opozorila"": """",
+  ""Vreme"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""Timestamp"": ""2023-09-15 15:30:00""
+}","Na primorski avtocesti so zastoji na več odsekih od Postojne proti Ljubljani. Čas vožnje se na celotnem odseku podaljša za približno 45 minut. Prav tako so zastoji na zahodni ljubljanski obvoznici proti Brezovici, na južni obvoznici proti Dolenjski, na štajerski avtocesti od Domžal proti Ljubljani ter na regionalnih cestah Lesce Bled in Logatec Vrhnika na Vrhniki. Na pomurski avtocesti so zaradi del zastoji med razcepom Dragučova in priključkom Pernica. Potovalni čas se podaljša za 20 minut. Opozarjamo na nevarnost naleta. Na štajerski avtocesti proti Ljubljani je zaradi pokvarjenega vozila promet oviran pred uvozom Lukovica.",0.7045952081680298,"
+                Deluješ kot poročevalec prometnih informacij za radijsko postajo. 
+Na podlagi vhodnih podatkov generiraj kratko in neposredno besedilo v katerem povzameš le najpomembnejše informacije.
+
+                **Vhodno sporočilo:**
+                ta vikend: - v Ljubljani bo Litijska cesta med Kajuhovo ulico in Parmsko cesto, vključno s križiščem Parmska/ Litijska, zaprta do nedelje, pojutrišnjem, do 18. ure. - v Ljubljani bo zaprta Vilharjeva cesta od sobote, jutri, od 6. ure do ponedeljka, 18. septembra, do 5. ure. - V soboto, jutri, bo med 7. in 17. uro zaprta cesta Polica - Podtabor v Podbrezju zaradi urejanja odvodnjavanja. - Cesta Velenje - Škale bo zaprta pri Škalah v soboto, jutri, od 7. ure dalje so nedelje, pojutrišnjem, do 17. ure zaradi asfaltiranja. Na dolenjski avtocesti med Trebnjim in Kronovim bo do 22. septembra promet potekal po enem pasu, v času prometnih konic so možni zastoji. Več o urniku zapor . Več o urniku zapor Do ponedeljka, 18. septembra, bo zaprta cesta Bogojina - Gančani, v Bogojini, zaradi gradnje krožišča in avtobusnih postajališč. . Ujma 2023 - Stahovica - Gornji Grad. - Podlom - Kranjski Rak - Luče. - Luče - Ljubno ob Savinji. - Dravograd - Trbonje. Več o zaporah na zemljevidu. Na primorski avtocesti od Postojne proti Ljubljani, zamuda najmanj 30 minut. Proti Primorski skozi razcep Kozarje iz obeh smeri, zamuda 30 minut. Na štajerski avtocesti od Šentjakoba proti ljubljanski vzhodni obvoznici in naprej proti Golovcu. Na ljubljanski obvoznici od Kosez proti Kozarjam. Na cestah Logatec - Vrhnika, Vrhnika - Brezovica. V Ljubljani, na cestah v okolici popolne zapore na Litijski cesti. 15-09-2023 15:32:00
+                **Vhodni JSON podatki:**
+                {
+  ""Delo na cesti"": """",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": ""ta vikend: - v Ljubljani bo Litijska cesta med Kajuhovo ulico in Parmsko cesto, vključno s križiščem Parmska/ Litijska, zaprta do nedelje, pojutrišnjem, do 18. ure. - v Ljubljani bo zaprta Vilharjeva cesta od sobote, jutri, od 6. ure do ponedeljka, 18. septembra, do 5. ure. - V soboto, jutri, bo med 7. in 17. uro zaprta cesta Polica - Podtabor v Podbrezju zaradi urejanja odvodnjavanja. - Cesta Velenje - Škale bo zaprta pri Škalah v soboto, jutri, od 7. ure dalje so nedelje, pojutrišnjem, do 17. ure zaradi asfaltiranja. Na dolenjski avtocesti med Trebnjim in Kronovim bo do 22. septembra promet potekal po enem pasu, v času prometnih konic so možni zastoji. Več o urniku zapor . Več o urniku zapor Do ponedeljka, 18. septembra, bo zaprta cesta Bogojina - Gančani, v Bogojini, zaradi gradnje krožišča in avtobusnih postajališč. . Ujma 2023 - Stahovica - Gornji Grad. - Podlom - Kranjski Rak - Luče. - Luče - Ljubno ob Savinji. - Dravograd - Trbonje. Več o zaporah na zemljevidu."",
+  ""Zastoji"": ""Na primorski avtocesti od Postojne proti Ljubljani, zamuda najmanj 30 minut. Proti Primorski skozi razcep Kozarje iz obeh smeri, zamuda 30 minut. Na štajerski avtocesti od Šentjakoba proti ljubljanski vzhodni obvoznici in naprej proti Golovcu. Na ljubljanski obvoznici od Kosez proti Kozarjam. Na cestah Logatec - Vrhnika, Vrhnika - Brezovica. V Ljubljani, na cestah v okolici popolne zapore na Litijski cesti."",
+  ""Ovire"": """",
+  ""Nesreče"": """",
+  ""Vreme"": """",
+  ""Opozorila"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""15-09-2023 15:32:00""
+}
+            ",/,"Dober dan, poslušalci, in dobrodošli v prometnih informacijah!
+
+Trenutno so najdaljši zastoji na primorski avtocesti:
+*   od Postojne proti Ljubljani, kjer je zamuda vsaj 30 minut.
+*   Prav tako proti Primorski, skozi razcep Kozarje iz obeh smeri, kjer prav tako izgubljate okoli 30 minut.
+*   Zastoji so tudi na štajerski avtocesti od Šentjakoba proti ljubljanski vzhodni obvoznici in naprej proti Golovcu.
+*   Na ljubljanski obvoznici od Kosez proti Kozarjam.
+*   Povečan promet je tudi na cestah Logatec - Vrhnika in Vrhnika - Brezovica.
+*   V Ljubljani pa se promet gosti v okolici Litijske ceste, zaradi popolne zapore.
+
+**Pozor na popolne zapore ta vikend:**
+*   V Ljubljani bo Litijska cesta med Kajuhovo in Parmsko, vključno s križiščem, zaprta do nedelje do 18. ure.
+*   Prav tako v prestolnici, Vilharjeva cesta bo zaprta od jutri, sobote, od 6. ure zjutraj, pa vse do ponedeljka, 18. septembra, do 5. ure.
+*   Jutri, v soboto, bo med 7. in 17. uro zaprta cesta Polica - Podtabor v Podbrezju.
+*   Cesta Velenje - Škale bo zaprta pri Škalah od jutri, sobote, od 7. ure do nedelje do 17. ure.
+
+**Še nekaj pomembnih informacij:**
+*   Na dolenjski avtocesti med Trebnjim in Kronovim bo do 22. septembra promet potekal po enem pasu, kar lahko v konicah povzroči zastoje.
+*   Do ponedeljka, 18. septembra, ostaja zaprta tudi cesta Bogojina - Gančani v Bogojini.
+*   Ne pozabite, da so zaradi ujme 2023 še vedno zaprte nekatere ceste, med drugim odseki Stahovica - Gornji Grad, Podlom - Kranjski Rak - Luče, Luče - Ljubno ob Savinji in Dravograd - Trbonje.
+
+Bodite previdni in prilagodite hitrost vožnje razmeram na cesti. Srečno pot!",0.8550350069999695,0.16236162361623616,0.07356666446523999,0.0405173716317718,0.021784574312094147,3,3,4,4,4,5
+gemini-2.5-flash,"Na primorski avtocesti bo pri Brezovici proti Kopru zaradi sanacije nadvoza promet potekal po enem prometnem pasu v nedeljo, med 8. in 16. uro. Na regionalni cesti Domžale - Želodnik bo do 24. decembra zaprt montažni most iz smeri Domžal proti Viru. Šmartinska cesta v Ljubljani je ponovno prevozna. . Okvarjeno vozilo ovira promet: - na vzhodni mariborski obvoznici med Rogozo in Maribor centrom proti Dragučovi; - na primorski avtocesti med Vrhniko in Logatcem proti Kopru je zaprt počasni pas. Poplavljena vozišča, popolne zapore: - Imeno - mejni prehod Imeno. - Smednik - Zameško - Kostanjevica, med Koprivnikom in Malencami. - Lokalni cesti Cikava - Paradišče ter Šmarje Sap - Lipoglav, podvozi pod avtocesto. - Lokalna cesta Koritno - Lešje, pri Koritnem. 16-12-2023 18:10:00","{
+  ""Delo na cesti"": ""Na primorski avtocesti bo pri Brezovici proti Kopru zaradi sanacije nadvoza promet potekal po enem prometnem pasu v nedeljo, med 8. in 16. uro. Na regionalni cesti Domžale - Želodnik bo do 24. decembra zaprt montažni most iz smeri Domžal proti Viru. Šmartinska cesta v Ljubljani je ponovno prevozna. ."",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": """",
+  ""Ovire"": ""Okvarjeno vozilo ovira promet: - na vzhodni mariborski obvoznici med Rogozo in Maribor centrom proti Dragučovi; - na primorski avtocesti med Vrhniko in Logatcem proti Kopru je zaprt počasni pas."",
+  ""Nesreče"": """",
+  ""Vreme"": ""Poplavljena vozišča, popolne zapore: - Imeno - mejni prehod Imeno. - Smednik - Zameško - Kostanjevica, med Koprivnikom in Malencami. - Lokalni cesti Cikava - Paradišče ter Šmarje Sap - Lipoglav, podvozi pod avtocesto. - Lokalna cesta Koritno - Lešje, pri Koritnem."",
+  ""Opozorila"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""16-12-2023 18:10:00""
+}","{
+  ""Delo na cesti"": """",
+  ""Dela"": ""Zaradi poplavljenega vozišča so zaprte ceste: Smédnik Zaméško Kostanjevica med Koprívnikom in Málencami, Cikáva Paradíšče, Šmarje Sap Lípoglav ter Koritno Léšje pri Koritnem. Zaprt je tudi mejni prehod Iméno."",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": ""Zaradi poplavljenega vozišča so zaprte ceste: Smédnik Zaméško Kostanjevica med Koprívnikom in Málencami, Cikáva Paradíšče, Šmarje Sap Lípoglav ter Koritno Léšje pri Koritnem. Zaprt je tudi mejni prehod Iméno."",
+  ""Zastoji"": """",
+  ""Ovire"": """",
+  ""Nesreče"": ""Regionalna cesta Tépanje Dráža vas je zaradi nesreče pri Dráži vasi zaprta."",
+  ""Opozorila"": ""Pokvarjeno vozilo ovira promet na vzhodni mariborski obvoznici med priključkoma Rogoza in Maribor center proti Avstriji."",
+  ""Vreme"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""Timestamp"": ""2023-12-16 18:30:00""
+}","Regionalna cesta Tépanje Dráža vas je zaradi nesreče pri Dráži vasi zaprta. Pokvarjeno vozilo ovira promet na vzhodni mariborski obvoznici med priključkoma Rogoza in Maribor center proti Avstriji. Zaradi poplavljenega vozišča so zaprte ceste: Smédnik Zaméško Kostanjevica med Koprívnikom in Málencami, Cikáva Paradíšče, Šmarje Sap Lípoglav ter Koritno Léšje pri Koritnem. Zaprt je tudi mejni prehod Iméno.",0.7314825057983398,"
+                Deluješ kot poročevalec prometnih informacij za radijsko postajo. 
+Na podlagi vhodnih podatkov generiraj kratko in neposredno besedilo v katerem povzameš le najpomembnejše informacije.
+
+                **Vhodno sporočilo:**
+                Na primorski avtocesti bo pri Brezovici proti Kopru zaradi sanacije nadvoza promet potekal po enem prometnem pasu v nedeljo, med 8. in 16. uro. Na regionalni cesti Domžale - Želodnik bo do 24. decembra zaprt montažni most iz smeri Domžal proti Viru. Šmartinska cesta v Ljubljani je ponovno prevozna. . Okvarjeno vozilo ovira promet: - na vzhodni mariborski obvoznici med Rogozo in Maribor centrom proti Dragučovi; - na primorski avtocesti med Vrhniko in Logatcem proti Kopru je zaprt počasni pas. Poplavljena vozišča, popolne zapore: - Imeno - mejni prehod Imeno. - Smednik - Zameško - Kostanjevica, med Koprivnikom in Malencami. - Lokalni cesti Cikava - Paradišče ter Šmarje Sap - Lipoglav, podvozi pod avtocesto. - Lokalna cesta Koritno - Lešje, pri Koritnem. 16-12-2023 18:10:00
+                **Vhodni JSON podatki:**
+                {
+  ""Delo na cesti"": ""Na primorski avtocesti bo pri Brezovici proti Kopru zaradi sanacije nadvoza promet potekal po enem prometnem pasu v nedeljo, med 8. in 16. uro. Na regionalni cesti Domžale - Želodnik bo do 24. decembra zaprt montažni most iz smeri Domžal proti Viru. Šmartinska cesta v Ljubljani je ponovno prevozna. ."",
+  ""Dela"": """",
+  ""Delovne zapore"": """",
+  ""Popolne zapore"": """",
+  ""Zastoji"": """",
+  ""Ovire"": ""Okvarjeno vozilo ovira promet: - na vzhodni mariborski obvoznici med Rogozo in Maribor centrom proti Dragučovi; - na primorski avtocesti med Vrhniko in Logatcem proti Kopru je zaprt počasni pas."",
+  ""Nesreče"": """",
+  ""Vreme"": ""Poplavljena vozišča, popolne zapore: - Imeno - mejni prehod Imeno. - Smednik - Zameško - Kostanjevica, med Koprivnikom in Malencami. - Lokalni cesti Cikava - Paradišče ter Šmarje Sap - Lipoglav, podvozi pod avtocesto. - Lokalna cesta Koritno - Lešje, pri Koritnem."",
+  ""Opozorila"": """",
+  ""Zimske razmere"": """",
+  ""Prireditve"": """",
+  ""Mejni prehodi"": """",
+  ""Omejitve za tovorna vozila"": """",
+  ""leftover_html"": """",
+  ""timestamp"": ""16-12-2023 18:10:00""
+}
+            ",/,"Dober večer, poslušalci, preverimo stanje na cestah.
+
+Zaradi poplavljenih vozišč so popolne zapore:
+*   Na cesti Imeno – mejni prehod Imeno.
+*   Med Smednikom, Zameškim in Kostanjevico, med Koprivnikom in Malencami.
+*   Zaprti so podvozi pod avtocesto na lokalnih cestah Cikava – Paradišče ter Šmarje Sap – Lipoglav.
+*   Ter lokalna cesta Koritno – Lešje, pri Koritnem.
+
+Promet ovirajo tudi okvarjena vozila:
+*   Na vzhodni mariborski obvoznici med Rogozo in Maribor centrom proti Dragučovi.
+*   Na primorski avtocesti med Vrhniko in Logatcem proti Kopru je zaprt počasni pas.
+
+Za jutri, nedeljo, med 8. in 16. uro, pa opozarjamo na dela na primorski avtocesti pri Brezovici proti Kopru, kjer bo promet potekal po enem pasu.
+
+Do 24. decembra ostaja zaprt montažni most na regionalni cesti Domžale – Želodnik, iz smeri Domžal proti Viru.
+
+Dobra novica pa je, da je Šmartinska cesta v Ljubljani ponovno prevozna.
+
+Želimo vam varno vožnjo!",0.8657616972923279,0.17567567567567569,0.09146315304814485,0.05006404401793242,0.029816067907401527,4,3,4,2,4,5
