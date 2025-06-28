@@ -333,14 +333,6 @@ if __name__ == "__main__":
         df = pd.read_csv("onjyfans2/report/code/trainingdataset_optimized_normalized.csv")
         logger.info(f"✅ Loaded {len(df)} rows from CSV")
         
-        # Show data info
-        logger.info(f"Columns: {list(df.columns)}")
-        if 'user_message' in df.columns and 'assistant_message' in df.columns:
-            logger.info("✅ Required columns found")
-        else:
-            logger.error("❌ Missing required columns: user_message, assistant_message")
-            sys.exit(1)
-        
         # Limit data for debugging
         if debug_mode:
             df = df.head(20)  # Only 20 examples for quick testing
