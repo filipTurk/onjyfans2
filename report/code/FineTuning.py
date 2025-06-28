@@ -253,33 +253,44 @@ class FineTuningDataset:
     def __init__(self, data):
         self.data = data
         self.traffic_examples = []
-        logger.info(f"📂 Initializing dataset with {len(data)} examples")
+        logger.info(f" Initializing dataset with {len(data)} examples")
         self.create_traffic_examples()
-        logger.info(f"✅ Created {len(self.traffic_examples)} training examples")
+        logger.info(f" Created {len(self.traffic_examples)} training examples")
         if len(self.traffic_examples) > 0:
             logger.info(f"Sample example: {self.traffic_examples[0]}")
         self.prompts = []
         
     def create_traffic_examples(self):
         for _, row in self.data.iterrows():
+            user_message = self.create_prompt_without_output_message(row["Input_Message"], row["Input_JSON"])
             example = {
                 "messages": [
-                    {"role": "user", "content": row["user_message"]},
-                    {"role": "assistant", "content": row["assistant_message"]}
+                    {"role": "user", "content":f"{user_message}"},
+                    {"role": "assistant", "content": row["Output_Message"]}
                 ]
             }
             self.traffic_examples.append(example)
         return self.traffic_examples
     
+    def create_prompt_without_output_message(self, input_message=None, input_json_str=None, instructions=None):
+        """
+        Ustvari prompt brez generiranega sporočila.
+        """
+        return f"""
+                **Vhodno sporočilo:**
+                {input_message}
+                **Vhodni JSON podatki:**
+                {input_json_str}
+            """
+        
     def parse_input_output(self, example):
         input_text = example["messages"][0]["content"]
         output_text = example["messages"][1]["content"]
         return input_text, output_text
     
     def get_prompt(self, example):
-        SYSTEM_PROMPT = """Ti si radijski prometni napovedovalec. Na podlagi surovih vhodnih podatkov o prometu (nesreče, zapore cest, čakalne dobe na mejah, okvare vozil, vreme itd.) pripravi jasen, urejen in tekoč prometni pregled, primeren za radijsko oddajo. 
-        Poročaj v formalnem, a razumljivem jeziku. Najprej izpostavi najpomembnejše prometne dogodke (npr. nesreče ali popolne zapore.
-        Sledi poročanje po kategorijah (nesreče, okvare vozil, dela na cesti, meje). Ne kopiraj besedila dobesedno preoblikuj podatke v zgoščen in tekoč govor. Vedno uporabi nevtralen ton in poročaj le relevantne informacije."""
+        SYSTEM_PROMPT = """Deluješ kot poročevalec prometnih informacij za radijsko postajo. Na podlagi vhodnih podatkov generiraj kratko in neposredno besedilo v katerem povzameš le najpomembnejše informacije."""
+        
         user_msg, assistant_msg = self.parse_input_output(example)
         
         formatted_text = f"<|system|>\n{SYSTEM_PROMPT}\n<|user|>\n{user_msg}\n<|assistant|>\n{assistant_msg}"
@@ -289,12 +300,21 @@ class FineTuningDataset:
         }) 
         
     def generate_dataset(self):
-        logger.info("🔄 Converting to HuggingFace dataset format...")
+        logger.info(" Converting to HuggingFace dataset format...")
         for example in self.traffic_examples:
             self.get_prompt(example)
         dataset = Dataset.from_list(self.prompts)
-        logger.info(f"✅ Dataset ready: {len(dataset)} examples")
+        logger.info(f" Dataset ready: {len(dataset)} examples")
         return dataset
+    
+    def showcase_dataset(self):
+        """
+        Prikaže nekaj primerov iz generiranega nabora podatkov.
+        """
+        logger.info("Showing a few examples from the dataset:")
+        for i in range(min(5, len(self.prompts))):
+            logger.info(f"Example {i+1}: {self.prompts[i]['text']}")
+    
 
 
 if __name__ == "__main__":
@@ -310,7 +330,7 @@ if __name__ == "__main__":
     
     try:
         logger.info("📁 Loading training data...")
-        df = pd.read_csv("ul-fri-nlp-course-project-2024-2025-onjyfans/report/code/trainingdataset2.csv")
+        df = pd.read_csv("ul-fri-nlp-course-project-2024-2025-onjyfans/report/code/trainingdataset_optimized_normalized.csv")
         logger.info(f"✅ Loaded {len(df)} rows from CSV")
         
         # Show data info
@@ -329,6 +349,7 @@ if __name__ == "__main__":
         logger.info("🏗️ Creating dataset...")
         finetuning_dataset = FineTuningDataset(df)
         finetuning_hf_dataset = finetuning_dataset.generate_dataset()
+        finetuning_dataset.showcase_dataset()
         
         logger.info("🤖 Starting fine-tuner...")
         tuner = FineTuner(
