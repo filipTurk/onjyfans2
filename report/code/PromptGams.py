@@ -121,7 +121,7 @@ class ModelInference:
             sequences = self.pipeline(
                 prompt,
                 do_sample=True,
-                temperature=0.7,
+                temperature=0.4,
                 top_p=0.9,
                 num_return_sequences=1,
                 eos_token_id=self.tokenizer.eos_token_id,
@@ -153,8 +153,8 @@ if __name__ == "__main__":
     ADAPTER_PATH = "./outputs" 
     
     DATA_PATH = "onjyfans2/report/code/trainingdataset_optimized_normalized.csv"
-    NUM_EXAMPLES_TO_TEST = 15
-    OUTPUT_CSV_PATH = "predictions_output_gams_prompting.csv"
+    NUM_EXAMPLES_TO_TEST = 35
+    OUTPUT_CSV_PATH = "predictions_output_gams_prompting002.csv"
 
     try:
         # --- MODIFIED: Pass both paths to the constructor ---
@@ -166,7 +166,7 @@ if __name__ == "__main__":
         # 2. Load the dataset
         logger.info(f"📁 Loading data from {DATA_PATH}...")
         df = pd.read_csv(DATA_PATH)
-        df_sample = df.head(NUM_EXAMPLES_TO_TEST)
+        df_sample = df.sample(n=NUM_EXAMPLES_TO_TEST, random_state=42)  # Randomly sample the specified number of examples
         logger.info(f"✅ Loaded {len(df)} rows, will test on the first {len(df_sample)}.")
 
         output_df = df_sample.copy()  # Keep a copy for output if needed
