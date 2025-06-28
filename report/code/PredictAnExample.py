@@ -35,7 +35,7 @@ def setup_logging():
 class Eval:
     def __init__(self, model_path="ul-fri-nlp-course-project-2024-2025-onjyfans/hpc_results/outputs", model_name="cjvt/GaMS-9B-Instruct"):
         logger.info("📥 Loading dataset...")
-        df = pd.read_csv("ul-fri-nlp-course-project-2024-2025-onjyfans/report/code/trainingdataset2.csv")
+        df = pd.read_csv("onjyfans2/report/code/trainingdataset_optimized_normalized.csv")
         self.original_df = df  # Keep original for CSV export
         finetuning_dataset = FineTuningDataset(df)
         self.dataset = finetuning_dataset.generate_dataset()
