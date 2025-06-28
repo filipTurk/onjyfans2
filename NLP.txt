@@ -14,7 +14,7 @@ DATA PREPARATION AND STRATEGY:
     	-groundtruth data is not consistent with road naming, can we fix that ? 
 	-TEMP 0.4  rp=1.2 je blo ako najbolš 
 
-INITIALIZING TRAINING: 
+INITIALIZING TRAININGAIzaSyBxsVjqwbO_qW9WlB2Suusx2QrtiZzeMuwAIzaSyBxsVjqwbO_qW9WlB2Suusx2QrtiZzeMuAwA: 
 	-prompt engennering 
 	-hyperparameter finetuning
 	-Lora qlora, peft

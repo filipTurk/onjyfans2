@@ -1,0 +1,1 @@
+model_choice,input_message,input_json_str,output_json_str,output_message,Semantic_similarity_score,prompt,system_instruction,response,bert_score,BLEU_1_score,BLEU_2_score,BLEU_3_score,BLEU_4_score,human_truthfulness,human_relevance,human_grammar,human_readability,human_orderofevents,human_timeliness
