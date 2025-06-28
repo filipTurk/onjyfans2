@@ -153,7 +153,7 @@ if __name__ == "__main__":
     ADAPTER_PATH = "./outputs" 
     
     DATA_PATH = "onjyfans2/report/code/trainingdataset_optimized_normalized.csv"
-    NUM_EXAMPLES_TO_TEST = 50
+    NUM_EXAMPLES_TO_TEST = 15
     OUTPUT_CSV_PATH = "predictions_output_gams_prompting.csv"
 
     try:
