@@ -102,7 +102,7 @@ class ModelInference:
         formatted_prompt = f"<|system|>\n{SYSTEM_PROMPT}\n<|user|>\n{user_message.strip()}\n<|assistant|>\n"
         return formatted_prompt
 
-    def generate(self, prompt: str, max_new_tokens: int = 150) -> str:
+    def generate(self, prompt: str, max_new_tokens: int = 350) -> str:
         """
         Generates text using the loaded pipeline.
         
