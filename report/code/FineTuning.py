@@ -330,7 +330,7 @@ if __name__ == "__main__":
     
     try:
         logger.info("📁 Loading training data...")
-        df = pd.read_csv("ul-fri-nlp-course-project-2024-2025-onjyfans/report/code/trainingdataset_optimized_normalized.csv")
+        df = pd.read_csv("onjyfans2/report/code/trainingdataset_optimized_normalized.csv")
         logger.info(f"✅ Loaded {len(df)} rows from CSV")
         
         # Show data info
